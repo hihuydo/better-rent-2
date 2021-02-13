@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_02_13_151548) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,4 +35,17 @@ ActiveRecord::Schema.define(version: 2021_02_13_151548) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer "stage"
+    t.bigint "user_id", null: false
+    t.integer "vote_location"
+    t.integer "vote_price"
+    t.integer "vote_size"
+    t.integer "vote_average"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+  add_foreign_key "votes", "users"
 end
