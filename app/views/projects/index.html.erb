@@ -1,0 +1,11 @@
+<h1>all of your projects</h1>
+  <div class="container">
+    <% @projects.each do |project|  %>
+      <h1><%= project.name%></h1>
+    <% end %>
+  <div>
+    <% if user_signed_in? %>
+    <%= link_to "create a new project", new_project_path %>
+    <% end %>
+  </div>
+</div>
