@@ -6,20 +6,25 @@ $font-size-base: 1rem;
 
 h1 {
   font-size: $font-size-base * 2;
+  font-family: $headers-font;
 }
 
 h2 {
   font-size: $font-size-base * 1.5;
+  font-family: $headers-font;
 }
 
 h3 {
   font-size: $font-size-base;
+  font-family: $headers-font;
 }
 
 p {
   font-size: $font-size-base;
+  font-family: $body-font;
 }
 
 .info-text {
   font-size: $font-size-base * 0,85;
+  font-family: $body-font;
 }
