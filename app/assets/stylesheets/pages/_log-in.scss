@@ -1,0 +1,108 @@
+body {
+  background-color: $bg-color;
+}
+
+.main-wrapper {
+  padding: $spacer;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: $spacer * 2;
+  justify-content: center;
+  align-content: center;
+}
+
+.log-in-card {
+  background-color: $card-bg-color;
+  border-radius: $spacer;
+  box-shadow: $card-box-shadow;
+  padding: $spacer * 2;
+  margin: 0;
+
+  h1 {
+    color: $text-color;
+    margin-bottom: $spacer * 2;
+  }
+
+  label {
+    color: $info-color;
+    font-size: 1rem * 0.85;
+  }
+
+  a {
+    color: $info-color;
+    font-size: $font-size-base * 0.85;
+
+    &:hover {
+      color: $link-color;
+      text-decoration: none;
+      border-bottom: 1px solid $link-color;
+    }
+  }
+}
+
+  input[type="email"], input[type="password"] {
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom: 1px solid $link-color;
+    color: $link-color;
+  }
+
+  input[type="submit"] {
+    background-color: $link-color;
+    border: 1px solid $link-color;
+    padding: $spacer $spacer * 6;
+    color: $text-color;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: $spacer * 2;
+
+    &:hover {
+      border-radius: $spacer * 20;
+      background-color: $link-color;
+      color: $text-color;
+    }
+}
+
+.floating-img {
+  height: auto;
+  animation: up-down 5s infinite ease-in-out alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 150px;
+  }
+}
+
+
+@keyframes up-down{
+  from{
+    transform: translatey(0px);
+  }
+  to{
+    transform: translatey(-10px);
+  }
+}
+
+.floating-img-reverse {
+  height: auto;
+  animation: down-up 5s infinite ease-in-out alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 150px;
+  }
+}
+
+@keyframes down-up{
+  from{
+    transform: translatey(-10px);
+  }
+  to{
+    transform: translatey(0px);
+  }
+}
