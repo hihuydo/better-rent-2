@@ -1,0 +1,3 @@
+<% @votes.each do |vote| %>
+  <li><h1 style='color:white;'><%= vote.user.email %> voted: <%= vote.vote_location %> on <%= vote.property.street %></h1></li>
+<% end %>
