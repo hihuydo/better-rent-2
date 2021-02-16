@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @booking = Project.new
+    # @project = Project.new
   end
 
   def new

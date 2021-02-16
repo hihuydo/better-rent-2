@@ -1,17 +1,20 @@
-<div>
-  <%= simple_form_for @property do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.input :street %>
-    <%= f.input :number %>
-    <%= f.input :zipcode %>
-    <%= f.input :city %>
-    <%= f.input :floor %>
-    <%= f.input :latitude %>
-    <%= f.input :longitude %>
-    <%= f.input :rent_per_sqm %>
-    <%= f.input :lettable_area %>
-    <%= f.input :availability %>
-    <%= f.button :submit, 'save property' %>
-  <% end %>
+<div class="container">
+  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+  <h1>add a property</h1>
+    <%= simple_form_for @property do |f| %>
+      <%= f.input :offer_url%>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :street%>
+      <%= f.input :number %>
+      <%= f.input :floor%>
+      <%= f.input :zipcode %>
+      <%= f.input :city %>
+      <%= f.input :rent_per_sqm %>
+      <%= f.input :lettable_area %>
+      <%= f.input :availability %>
+      <%= f.button :submit, "save", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <p><%= link_to 'back to your properties', properties_path %></p>
 </div>
