@@ -1,10 +1,12 @@
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-  <h1>Update your project: <%=@project.title %></h1>
+  <h1>Update your project: <%=@project.name %></h1>
     <%= simple_form_for @project do |f| %>
       <%= f.input :name%>
+      <%= f.input :description%>
       <%= f.button :submit, "save", class: "btn btn-primary" %>
     <% end %>
-  </div>
+    <br>
     <p><%= link_to 'back to your projects', projects_path %></p>
+  </div>
 </div>
