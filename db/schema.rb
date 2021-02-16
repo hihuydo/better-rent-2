@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_154928) do
+ActiveRecord::Schema.define(version: 2021_02_16_185333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_154928) do
     t.integer "stage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_02_13_154928) do
     t.string "cloudinary_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_properties_on_project_id"
     t.index ["user_id"], name: "index_properties_on_user_id"
   end
 
@@ -77,11 +80,15 @@ ActiveRecord::Schema.define(version: 2021_02_13_154928) do
     t.integer "vote_average"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "property_id", null: false
+    t.index ["property_id"], name: "index_votes_on_property_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   add_foreign_key "participants", "projects"
   add_foreign_key "participants", "users"
+  add_foreign_key "properties", "projects"
   add_foreign_key "properties", "users"
+  add_foreign_key "votes", "properties"
   add_foreign_key "votes", "users"
 end
