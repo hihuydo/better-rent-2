@@ -1,0 +1,17 @@
+<div>
+  <%= simple_form_for @property do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :street %>
+    <%= f.input :number %>
+    <%= f.input :zipcode %>
+    <%= f.input :city %>
+    <%= f.input :floor %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :rent_per_sqm %>
+    <%= f.input :lettable_area %>
+    <%= f.input :availability %>
+    <%= f.button :submit, 'save property' %>
+  <% end %>
+</div>
