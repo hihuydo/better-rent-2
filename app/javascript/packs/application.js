@@ -32,3 +32,8 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+// Import Star-rating JS
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();

@@ -1,13 +1,22 @@
 <div class="container">
-  <h1>all of your projects</h1>
+  <h1>Projects</h1>
+    <br>
+    <br>
   <div>
+  <p>Start here by adding a project. Add the city or location where you are choosing a new space.</p>
+  </div>
+  <br>
+  <br>
+  <div class="card-project">
     <% @projects.each do |project|  %>
-      <p><%= project.name%></p>
+      <h4><%= project.name%></h4>
       <p><%= project.description%></p>
       <%= link_to "edit", edit_project_path(project) %>
       <%= link_to "delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
+  <br>
+  <br>
   <% if user_signed_in? %>
   <%= link_to "create a new project", new_project_path %>
   <% end %>
