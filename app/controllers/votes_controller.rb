@@ -14,13 +14,19 @@ class VotesController < ApplicationController
     @user = current_user
     @vote.property = @property
     @vote.user = @user
-    @vote.save!
-    redirect_to property_votes_path
+
+    if @vote.save!
+      redirect_to property_votes_path
+    else
+      flash[:alert] = "Something went wrong."
+      render :new
+    end
   end
+
 
   private
 
   def vote_params
-    params.require(:vote).permit(:vote_location)
+    params.require(:vote).permit(:vote_location, :vote_price, :vote_size)
   end
 end

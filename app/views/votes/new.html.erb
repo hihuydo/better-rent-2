@@ -1,14 +1,15 @@
-<%= simple_form_for [ @property, @vote ] do |f| %>
-  <%= f.input :vote_location %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+			<div class="rating">
+			  <%= simple_form_for [ @property, @vote ] do |f| %>
+					<%= f.input :vote_location, collection: (1..5).to_a, label: "Rate the location" %>
+					<%= f.input :vote_price, collection: (1..5).to_a, label: "Rate the price" %>
+					<%= f.input :vote_size, collection: (1..5).to_a, label: "Rate the floorplan" %>
+					<%= f.submit "VOTE!" %>
+      	<% end %>
+			</div>
 
-
-<h1>Rating Stars with no JS</h1>
-	<div class="rating rating2"><!--
-		--><a href="#5" title="Give 5 stars">★</a><!--
-		--><a href="#4" title="Give 4 stars">★</a><!--
-		--><a href="#3" title="Give 3 stars">★</a><!--
-		--><a href="#2" title="Give 2 stars">★</a><!--
-		--><a href="#1" title="Give 1 star">★</a>
-	</div>
+    </div>
+  </div>
+</div>
