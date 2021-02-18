@@ -1,0 +1,19 @@
+/* use this file to style the horizontal header at the top of the dashboard */
+
+.header {
+  display: flex;
+  margin-left: 50px;
+  height: 100px;
+  background-color: red;
+}
+
+.line {
+  position: absolute;
+  width: 1240px;
+  height: 0px;
+  left: 124px;
+  top: 94.96px;
+
+  border: 1px solid white;
+  transform: rotate(-0.04deg);
+}
