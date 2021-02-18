@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+			<div class="rating">
+			  <%= simple_form_for [ @property, @vote ] do |f| %>
+					<%= f.input :vote_location, collection: (1..5).to_a, label: "Rate the location" %>
+					<%= f.input :vote_price, collection: (1..5).to_a, label: "Rate the price" %>
+					<%= f.input :vote_size, collection: (1..5).to_a, label: "Rate the floorplan" %>
+					<%= f.submit "VOTE!" %>
+      	<% end %>
+			</div>
+
+    </div>
+  </div>
+</div>
