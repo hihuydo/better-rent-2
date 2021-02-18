@@ -1,0 +1,18 @@
+
+h1 {
+  margin-bottom: $spacer * 2;
+}
+
+.container {
+   color: $text-color;
+}
+
+.card-project {
+  width: 30%;
+  height: auto;
+  background-color: $card-bg-color;
+  box-shadow: $card-box-shadow;
+  padding: 1rem;
+  border-radius: $spacer;
+  margin: 0 1rem 1rem 0;
+}
