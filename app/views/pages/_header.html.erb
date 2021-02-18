@@ -1,6 +1,26 @@
-<div class="container">
-  <div class="header">
-    <p><%= link_to 'sign out', destroy_user_session_path %></p>
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <% case request.path %>
+        <% when '/properties/new'%>
+          <h1><%= "Add a property to your project" %></h1>
+        <% when '/properties' %>
+          <h1><%= "See your properties below" %></h1>
+        <% else %>
+          <h1><%= "TITLE NOT SET UP YET check out _header.html.erb" %></h1>
+        <% end %>
+      </div>
+      <div class="col-sm">
+        <div class="logout">
+          <% if user_signed_in? %>
+            <%= link_to 'log out', destroy_user_session_path, :method => 'delete' %>
+          <% else %>
+            <%= link_to "log in", new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="line"></div>
 </div>
