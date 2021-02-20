@@ -5,19 +5,26 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
-  def new
-    @property = Property.new
-  end
-
   def show
     @property = Property.find(params[:id])
   end
 
+  def new
+    @project = Project.find(params[:project_id])
+    @property = Property.new
+  end
+
   def create
     @property = Property.new(property_params)
-    @property.user = current_user
-    @property.save
-    redirect_to projects_path(@project)
+    @project = Project.find(params[:project_id])
+    @user = current_user
+
+    @property.project_id = @project.id
+    @property.user = @user
+
+
+    @property.save!
+    redirect_to project_path(@project)
   end
 
   def edit
