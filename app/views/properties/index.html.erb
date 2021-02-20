@@ -7,7 +7,7 @@
     <% @properties.each do |property|  %>
       <h4><%= property.title%></h4>
       <p><%= property.description%></p>
-      <%= link_to "view", project_property_path(params[:project_id],property) %>
+      <%= link_to "property details", project_property_path(params[:project_id],property) %>
       <%= link_to "edit", edit_project_property_path(params[:project_id],property) %>
       <%= link_to "delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
