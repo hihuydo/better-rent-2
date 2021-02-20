@@ -18,9 +18,4 @@
       <%= link_to "delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
-  <br>
-  <br>
-  <% if user_signed_in? %>
-  <%= link_to "create a new project", new_project_path %>
-  <% end %>
 </div>
