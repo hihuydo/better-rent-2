@@ -2,7 +2,8 @@ class PropertiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @properties = Property.all
+    @project = Project.find(params[:project_id])
+    @properties = @project.properties
   end
 
   def show
