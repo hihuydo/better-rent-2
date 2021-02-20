@@ -1,2 +1,19 @@
+
 <%= render 'pages/header' %>
-<h1>see all of your properties</h1>
+
+<div class="container">
+
+  <div class="card-project">
+    <% @properties.each do |property|  %>
+      <h4><%= property.title%></h4>
+      <p><%= property.description%></p>
+      <%= link_to "edit", edit_property_path(property) %>
+      <%= link_to "delete", property_path(property), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+  <br>
+  <br>
+  <% if user_signed_in? %>
+  <%= link_to "create a new property", new_project_property_path %>
+  <% end %>
+</div>
