@@ -1,11 +1,10 @@
-<%= render 'pages/header' %>
 
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <div class="property_card">
       <h1>create a property</h1>
-        <%= simple_form_for @property do |f| %>
+        <%= simple_form_for [ @project, @property ] do |f| %>
           <%= f.input :title, placeholder: 'Title', label:false %>
           <%= f.input :description, placeholder: 'Describe the offer', label:false %>
           <%= f.input :street, placeholder: 'Street', label:false %>
@@ -25,7 +24,7 @@
     <div class="container">
       <div class="property_card">
         <h1>add a property from the web</h1>
-        <%= simple_form_for @property do |f| %>
+        <%= simple_form_for [ @project, @property ] do |f| %>
           <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
         <%= f.button :submit, "submit", class: "btn btn-primary" %>
         <% end %>
@@ -34,6 +33,6 @@
   </div>
 </div>
   <div class="d-flex flex-row-reverse">
-    <p><%= link_to 'back to your properties', properties_path %></p>
+    <p><%= link_to 'back to your properties',  project_properties_path %></p>
   </div>
 </div>

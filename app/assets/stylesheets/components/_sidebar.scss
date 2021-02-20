@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar {
+  width: 80px;
+  height: 100%;
+  background: $navi-bg-color;
+  position: fixed;
+  top: 0;
+}
+
+.avatar {
+  margin-top: $spacer * 2;
+  margin-left: $spacer * 2;
+}
+
+.icon-bar {
+  text-align: center;
+  margin-top: 300px;
+}    
+
+li {
+  margin-top: $spacer;
+}
+
+.active {
+  background-color: $navi-tag-active;
+  color: white;
+  border-radius: 0px 5px 5px 0px;
+  width: 110%;
+  transition: 0.3s ease;
+}
+
+ul li {
+  padding-top: $spacer * 2;
+  padding-bottom: $spacer * 2;
+  background-color:$navi-tab-inactive;
+  color: $navi-icon-inactive;
+  list-style-type: none;
+  border-radius: 0px 5px 5px 0px;
+  width: 110%;
+}    
+
+.wrapper .sidebar ul li:hover {
+  background-color: $navi-tag-active;
+  color: $navi-icon-active;
+  border-radius: 0px 5px 5px 0px;
+  width: 110%;
+}
+
+.fa-plus-circle {
+  color: $navi-icon-active; 
+  position: absolute;
+  bottom: $spacer * 2;
+  font-size: 28px;
+  margin-left: $spacer * 3;
+}
+
+
+.fa-plus-circle:hover {
+  color: $navi-icon-inactive;
+}
