@@ -1,3 +1,8 @@
 <%= render 'pages/sidebar' %>
+<%= render 'pages/header', title: "#{@property.street} #{@property.number}, #{@property.zipcode} #{@property.city}"  %>
 
-<h1>test</h1>
+    <% if @property.photos.attached? %>
+      <% @property.photos.each do |photo|  %>
+        <%= cl_image_tag photo.key, height: 100, width: 200, crop: :thumb, class: "thumbnails-img" %>
+      <% end %>
+    <% end %>

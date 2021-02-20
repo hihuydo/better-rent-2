@@ -13,9 +13,6 @@ Project.destroy_all
 User.destroy_all
 
 
-
-
-
 user_1 = User.create!(
   email: 'Chiara@chiara.com',
   password: '123456',
