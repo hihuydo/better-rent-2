@@ -16,6 +16,7 @@
           <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
           <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
           <%= f.input :availability, placeholder: 'Availabe from', label:false %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
           <%= f.button :submit, "submit", class: "btn btn-primary" %>
         <% end %>
       </div>

@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.user = current_user
+    @property.project_id = request.path[10] # this needs to be refactored!
     @property.save
     redirect_to projects_path
   end
