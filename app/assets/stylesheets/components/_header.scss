@@ -1,24 +1,26 @@
 /* use this file to style the horizontal header at the top of the dashboard */
 
 .header {
-  margin-top: 50px;
+  // margin-top: 50px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 100px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #292E33;
+  h1 {
+    margin-bottom: 0;
+  }
 }
 
-.header .line {
-  margin-top: 30px;
-  position: absolute;
-  width: 1240px;
-  height: 0px;
-  left: 124px;
-  top: 94.96px;
 
-  border: 1px solid #748AA1;
-  transform: rotate(-0.04deg);
-}
 
-.logout {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
+.form-outline {
+  input {
+    background-color: #292E33;
+    border-color: #292E33;
+  }
 }
