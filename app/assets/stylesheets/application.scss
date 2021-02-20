@@ -20,6 +20,9 @@
 // Import Style for star-rating
 @import "jquery-bar-rating/dist/themes/css-stars";
 
+body {
+  color: $text-color;
+}
 
 * { margin: 0; padding: 0 }
 
