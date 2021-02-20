@@ -42,9 +42,6 @@ class PropertiesController < ApplicationController
     redirect_to project_properties_path(project)
   end
 
-
-
-
   private
 
   def property_params
