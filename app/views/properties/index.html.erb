@@ -7,7 +7,7 @@
     <% @properties.each do |property|  %>
       <h4><%= property.title%></h4>
       <p><%= property.description%></p>
-      <%= link_to "edit", edit_property_path(property) %>
+      <%= link_to "edit", edit_project_property_path(property) %>
       <%= link_to "delete", property_path(property), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
