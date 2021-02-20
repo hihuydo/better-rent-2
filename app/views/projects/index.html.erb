@@ -1,5 +1,6 @@
+<%= render 'pages/header' %>
+
 <div class="container">
-  <h1>Projects</h1>
     <br>
     <br>
   <div>
@@ -11,7 +12,8 @@
     <% @projects.each do |project|  %>
       <h4><%= project.name%></h4>
       <p><%= project.description%></p>
-      <%= link_to "edit", edit_project_path(project) %>
+      <%= link_to "go to properties", project_properties_path(project) %>
+      <%= link_to "edit project", edit_project_path(project) %>
       <%= link_to "delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
   </div>
