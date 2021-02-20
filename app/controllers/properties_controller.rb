@@ -24,7 +24,8 @@ class PropertiesController < ApplicationController
 
 
     @property.save!
-    redirect_to project_path(@project)
+    # redirect_to project_path(@project)
+    redirect_to project_properties_path(@project)
   end
 
   def edit
@@ -34,8 +35,17 @@ class PropertiesController < ApplicationController
   def update
     @property = Property.find(params[:id])
     @property.update(property_params)
-    redirect_to projects_path(@project)
+    redirect_to project_properties_path(project)
   end
+
+  def destroy
+    @property = Property.find(params[:id])
+    project = Project.find(params[:project_id])
+    @property.destroy
+    redirect_to project_properties_path(project)
+  end
+
+
 
 
   private
