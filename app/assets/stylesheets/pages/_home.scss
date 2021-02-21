@@ -1,1 +1,43 @@
 // Specific CSS for your home-page
+
+.home-img {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: $bg-color;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2100&q=80');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+  button {
+    border: none;
+    border-radius: $spacer;
+    background-color: $link-color;
+    box-shadow: $card-box-shadow;
+    padding: $spacer $spacer * 3;
+    transition: all 0.3s;
+    margin-top: 32px;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+}
+
+.card-home {
+  width: 30%;
+  height: auto;
+  background-color: $bg-color-white;
+  box-shadow: $card-box-shadow;
+  padding: 1.7rem;
+  opacity: 80%;
+  border-radius: $spacer;
+  margin: 0 1rem 1rem 0;
+}
+
