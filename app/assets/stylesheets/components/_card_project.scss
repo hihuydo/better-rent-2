@@ -1,0 +1,24 @@
+
+.card-project {
+  width: 90%;
+  height: auto;
+  background-color: $card-bg-color;
+  box-shadow: $card-box-shadow;
+  padding: 1rem;
+  border-radius: $spacer;
+  margin: 0 1rem 1rem 0;
+
+  button {
+    border: none;
+    border-radius: $spacer;
+    background-color: $link-color;
+    box-shadow: $card-box-shadow;
+    padding: $spacer $spacer * 3;
+    transition: all 0.3s;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+    }
+  }
+}

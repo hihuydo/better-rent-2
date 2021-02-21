@@ -1,5 +1,5 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "Projects" %>
+<%= render 'pages/header', title: "Your Projects" %>
 
 <div class="container">
   <div class="container-projects">
@@ -11,22 +11,19 @@
       <div class="col-sm">
         <h4>Stage 1</h4>
         <br>
+        <% @projects.each do |project|  %>
           <div class="card-project">
-
-            <div class="one-project">
-              <% @projects.each do |project|  %>
               <h4><%= project.name%></h4>
               <p><%= project.description%></p>
-              <%= link_to "go to properties", project_properties_path(project) %>
-              <%= link_to "edit project", edit_project_path(project) %>
-              <%= link_to "delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %>
-            <% end %>
-            </div>
+              <button type="button-project"><%= link_to "go to properties", project_properties_path(project) %></button>
+              <button type="button-project"><%= link_to "edit project", edit_project_path(project) %></button>
+              <button type="button-project"><%= link_to "delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
           </div>
-        </div>
-        <div class="col-sm">
+        <% end %>
+      </div>
+      <div class="col-sm">
 
-        <h4>Stage 2</h4>
+      <h4>Stage 2</h4>
       </div>
     </div>
   </div>
