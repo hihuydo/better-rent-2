@@ -1,8 +1,32 @@
 <%= render 'pages/sidebar' %>
 <%= render 'pages/header', title: "#{@property.street} #{@property.number}, #{@property.zipcode} #{@property.city}"  %>
 
-    <% if @property.photos.attached? %>
-      <% @property.photos.each do |photo|  %>
-        <%= cl_image_tag photo.key, height: 100, width: 200, crop: :thumb, class: "thumbnails-img" %>
+<div class="property-container">
+  <div class="col-sm-7">
+  
+    <div class="property-picture">
+      <% if @property.photos.attached? %>
+        <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
       <% end %>
-    <% end %>
+  
+
+      <%= render 'votes/star_rating' %>
+
+    <div class="description">
+    
+    </div>
+    
+    </div>
+  </div>
+
+  <div class="col-sm-5">
+    <div class="chat-box">
+      <h2>Message going here</h2>
+    </div>
+  </div>
+
+
+
+
+
+</div>

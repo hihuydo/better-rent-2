@@ -1,0 +1,21 @@
+.rating-row {
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  justify-content: space-between;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid $link-color;
+}
+
+.rating {
+  color: $text-color;
+  font-size: $font-size-base;
+  font-family: $body-font;
+  margin-top: 30px;
+}
+
+.h3 {
+  margin-top: 30px;
+  border-bottom: 1px solid $link-color;
+}
