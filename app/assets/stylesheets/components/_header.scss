@@ -6,21 +6,22 @@
   justify-content: space-between;
   align-items: center;
   margin-left: 100px;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  margin-right: 40px;
+  margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #292E33;
+
   h1 {
     margin-bottom: 0;
   }
 }
 
-
-
 .form-outline {
   input {
     background-color: #292E33;
     border-color: #292E33;
+    font-size: 14px;
+    width: 300px;
   }
 }
