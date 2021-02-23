@@ -27,12 +27,14 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    @project = Project.find(params[:project_id])
   end
 
   def update
     @property = Property.find(params[:id])
+    @project = Project.find(params[:project_id])
     @property.update(property_params)
-    redirect_to project_properties_path(project)
+    redirect_to project_properties_path(@project)
   end
 
   def destroy
