@@ -4,6 +4,14 @@ class VotesController < ApplicationController
   def index
     @votes = Vote.all
   end
+
+  def show
+    @property = Property.find(params[:property_id])
+    @project = Project.find(params[:project_id]) 
+    @vote.user = current_user
+    @vote = Vote.find(params[:id]) 
+  end 
+
   
   def new
     @property = Property.find(params[:property_id])
@@ -16,20 +24,25 @@ class VotesController < ApplicationController
     @vote = Vote.new(vote_params)
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
-
-    # @user = current_user
     @vote.property = @property
-    # @vote.property.project_id = @project.id
     @vote.user = current_user
 
     if @vote.save!
-      redirect_to project_properties_path
+      redirect_to project_property_path(@project, @property)
     else
       flash[:alert] = "Something went wrong."
       render :new
     end
   end
 
+  def destroy
+    @property = Property.find(params[:property_id])
+    @project = Project.find(params[:project_id])
+    @vote = Vote.all
+    @vote.destroy_all
+    redirect_to project_property_path(@project, @property)
+
+  end
 
   private
 
