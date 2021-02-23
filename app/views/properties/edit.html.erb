@@ -1,1 +1,23 @@
-<h1>edit a property</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="property_card">
+      <h1>update @property.title</h1>
+        <%= simple_form_for [ @project, @property ] do |f| %>
+          <%= f.input :title, placeholder: @property.title, label:false %>
+          <%= f.input :description, placeholder: 'Describe the offer', label:false %>
+          <%= f.input :street, placeholder: 'Street', label:false %>
+          <%= f.input :number, placeholder: 'Number', label:false %>
+          <%= f.input :floor, placeholder: 'Floor', label:false %>
+          <%= f.input :zipcode, placeholder: 'Zipcode', label:false %>
+          <%= f.input :city, placeholder: 'City', label:false %>
+          <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
+          <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
+          <%= f.input :availability, placeholder: 'Availabe from', label:false %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+          <%= f.button :submit, "submit", class: "btn btn-primary", method: :patch %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
