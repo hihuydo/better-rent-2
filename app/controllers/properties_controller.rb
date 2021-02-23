@@ -8,6 +8,10 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @vote_check = @property.id
+    @project = Project.find(params[:project_id])
+    @vote = Vote.new
+
   end
 
   def new

@@ -1,0 +1,31 @@
+
+<div class="col-sm-7">
+<div class="rating">
+  <h3>Every vote counts</h3>
+  <%= simple_form_for [ @project, @property, @vote ] do |f| %>
+		<div class="rating-row">
+			<p>Price</p>
+			<p><%= @property.rent_per_sqm %> EUR / m²</p>
+			<%= f.input :vote_price, collection: (1..5).to_a, label: false %> 
+		</div>
+
+		<div class="rating-row">
+			<p>Location</p>
+			<p><%= @property.street %> <%= @property.number %></p>
+			<%= f.input :vote_location, collection: (1..5).to_a, label: false %> 
+		</div>
+
+
+		<div class="rating-row">
+			<p>Size</p>
+			<p><%= @property.lettable_area %> m²</p>
+			<%= f.input :vote_size, collection: (1..5).to_a, label: false %> 
+		</div>
+
+		<%= f.submit "VOTE!" %>
+    <% end %>
+</div>
+</div>
+
+
+
