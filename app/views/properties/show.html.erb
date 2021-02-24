@@ -9,11 +9,18 @@
         <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
       <% end %>
   
-
+    <% if @vote_check.empty? %>
       <%= render 'votes/star_rating' %>
+    <% else %>
+      <%= render 'votes/voted' %>
+      <%= link_to "Remove all", project_property_vote_path(@project, @property),  
+                                method: :delete,
+                                data: { confirm: "Are you sure?" }  %>
+    <% end %>
 
     <div class="description">
-    
+      <h3>Description of the property</h3>
+      <p><%= @property.description %></p>
     </div>
     
     </div>
@@ -22,11 +29,9 @@
   <div class="col-sm-5">
     <div class="chat-box">
       <h2>Message going here</h2>
+      <img src="../../assets/images/chat.png" alt="Chat Messages">
+
     </div>
   </div>
-
-
-
-
-
 </div>
+
