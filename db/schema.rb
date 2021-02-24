@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_130317) do
+ActiveRecord::Schema.define(version: 2021_02_24_200810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2021_02_20_130317) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.integer "stage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.bigint "user_id", null: false
+    t.integer "stage", default: 1
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -100,10 +100,10 @@ ActiveRecord::Schema.define(version: 2021_02_20_130317) do
     t.integer "vote_location"
     t.integer "vote_price"
     t.integer "vote_size"
-    t.integer "vote_average"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "property_id", null: false
+    t.float "vote_average"
     t.index ["property_id"], name: "index_votes_on_property_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
