@@ -1,0 +1,64 @@
+.property-cards {
+  width: 70%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+.property-map {
+  width: 30%;
+}
+
+.property-card {
+  width: 330px;
+  background-color: $card-bg-color;
+  padding: 1rem;
+  border-radius: $spacer;
+  margin: 0 1rem 1rem 1rem;
+
+  button {
+    border: none;
+    border-radius: $spacer;
+    border: 1px solid $link-color;
+
+    font-size: 0.85rem;
+    background-color: transparent;
+    padding: $spacer $spacer * 3;
+    transition: all 0.3s;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      color: $link-color;
+    }
+
+    &:hover {
+      background-color: $link-color;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.property-address {
+  margin-top: $spacer;
+  font-size: $font-size-base;
+}
+
+.property-info {
+  font-size: 0.85rem;
+  color: $info-color;
+  margin-bottom: 50px;
+}
+
+.property-CTA {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-eye {
+  font-size: 2rem;
+}

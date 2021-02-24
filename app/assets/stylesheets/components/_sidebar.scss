@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
 .wrapper {
   display: flex;
@@ -6,7 +6,7 @@
 }
 
 .wrapper .sidebar {
-  width: 80px;
+  width: 60px;
   height: 100%;
   background: $navi-bg-color;
   position: fixed;
@@ -14,14 +14,13 @@
 }
 
 .avatar {
-  margin-top: $spacer * 2;
-  margin-left: $spacer * 2;
+  margin: $spacer * 2 $spacer;
 }
 
 .icon-bar {
   text-align: center;
-  margin-top: 300px;
-}    
+  margin-top: 200px;
+}
 
 li {
   margin-top: $spacer;
@@ -43,7 +42,7 @@ ul li {
   list-style-type: none;
   border-radius: 0px 5px 5px 0px;
   width: 110%;
-}    
+}
 
 .wrapper .sidebar ul li:hover {
   background-color: $navi-tag-active;
@@ -53,14 +52,15 @@ ul li {
 }
 
 .fa-plus-circle {
-  color: $navi-icon-active; 
+  color: $navi-icon-inactive;
   position: absolute;
   bottom: $spacer * 2;
   font-size: 28px;
-  margin-left: $spacer * 3;
+  margin-left: $spacer * 2;
+  margin-right: $spacer * 2;
 }
 
 
-.fa-plus-circle:hover {
-  color: $navi-icon-inactive;
-}
+// .fa-plus-circle:hover {
+//   color: $navi-icon-inactive;
+// }

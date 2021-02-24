@@ -1,17 +1,42 @@
-<div class="container">
+<%= render 'pages/sidebar' %>
+<%= render 'pages/header', title: @project.name %>
 
-  <div class="card-project">
+<div class="main-container">
+  <div class="sub-header-properties">
+    <div>
+      <div class="stage-project button">
+        Stage 1 of 2
+      </div>
+      <% if user_signed_in? %>
+        <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="property-cards">
     <% @properties.each do |property|  %>
-      <h4><%= property.title%></h4>
-      <p><%= property.description%></p>
-      <%= link_to "property details", project_property_path(params[:project_id],property) %>
-      <%= link_to "edit", edit_project_property_path(params[:project_id],property) %>
-      <%= link_to "delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %>
+      <div class="property-card">
+        <% property.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
+        <% end %>
+        <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+        <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+
+        <div class="property-CTA">
+          <div>
+            <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>
+            <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
+          </div>
+          <%= link_to project_property_path(params[:project_id],property) do %>
+            <i class="far fa-eye"></i>
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
-  <br>
-  <br>
-  <% if user_signed_in? %>
-  <%= link_to "create a new property", new_project_property_path %>
-  <% end %>
+
+  <div class="property-map">
+    <!-- MAP -->
+  </div>
+
 </div>
