@@ -12,8 +12,6 @@
     <% if @vote_check.empty? %>
       <%= render 'votes/star_rating' %>
     <% else %>
-      <p>you voted</p>
-
       <%= render 'votes/voted' %>
       <%= link_to "Remove all", project_property_vote_path(@project, @property),  
                                 method: :delete,
@@ -31,10 +29,9 @@
   <div class="col-sm-5">
     <div class="chat-box">
       <h2>Message going here</h2>
-      <img src="../../assets/images/chat.jpeg">
+      <img src="../../assets/images/chat.png" alt="Chat Messages">
 
     </div>
   </div>
-
-
 </div>
+
