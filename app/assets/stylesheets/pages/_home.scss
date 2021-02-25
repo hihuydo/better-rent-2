@@ -3,11 +3,11 @@
 .home-img {
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: $bg-color;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
+    // color: $bg-color;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2100&q=80');
     background-size: cover;
     background-position: center center;
@@ -31,13 +31,43 @@
 }
 
 .card-home {
-  width: 30%;
-  height: auto;
-  background-color: $bg-color-white;
-  box-shadow: $card-box-shadow;
-  padding: 1.7rem;
-  opacity: 80%;
+  background-color: $card-bg-color;
   border-radius: $spacer;
-  margin: 0 1rem 1rem 0;
+  padding: $spacer * 8 $spacer * 2;
+  margin: 0;
+  text-align: center;
+
+  h1 {
+    color: $text-color;
+    margin-bottom: 0;
+  }
+
+  img {
+    width: 50% !important;
+    margin-bottom: $spacer;
+  }
+
+  p {
+    margin-bottom: $spacer * 4;
+    color: $info-color;
+  }
+  a {
+    color: #fff;
+    font-size: $font-size-base * 0.85;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px solid $link-color;
+    }
+  }
 }
 
+.card-home-button {
+    background-color: $link-color;
+    border: 1px solid $link-color;
+    border-radius: $spacer;
+    padding: $spacer $spacer * 6;
+    color: $text-color;
+    transition: all 0.3s ease-in-out;
+}
