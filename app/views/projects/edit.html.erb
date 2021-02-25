@@ -1,13 +1,16 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "Edit a project" %>
-
-
+<%= render 'pages/header', title: "Edit project: #{@project.name}" %>
+  <br>
+  <br>
+  <br>
+  <br>
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-  <h1>Update your project: <%= @project.name %></h1>
+<!--   <h1>Update your project: <%#= @project.name %></h1> -->
     <%= simple_form_for @project do |f| %>
       <%= f.input :name %>
       <%= f.input :description %>
+      <%= f.input :stage %>
       <%= f.button :submit, "save", class: "btn btn-primary" %>
     <% end %>
     <br>

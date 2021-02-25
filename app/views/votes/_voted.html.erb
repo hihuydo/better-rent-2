@@ -1,17 +1,13 @@
-<div class="col-sm-7">
+<div class="col-sm-8">
 	<div class="rating">
-	<h1>You already voted</h1> 
+	<h1>You already voted</h1>
 		<div class="rating-row">
 			<p>Price</p>
 			<p><%= @property.rent_per_sqm %> EUR / m²</p>
 			<div>	
-				<% @property.votes.each do |vote| %>
-					<div>
-						<% vote.vote_price.to_i.times do %>
-							<i class="fas fa-star"></i>
-						<% end %>			
-					</div>
-				<% end %>
+				<% @vote_check.vote_price.times do %>
+					<i class="fas fa-star"></i>
+				<% end %>			
 			</div>
 		</div>
 
@@ -19,13 +15,9 @@
 			<p>Location</p>
       <p><%= @property.street %> <%= @property.number %></p>
 			<div>	
-				<% @property.votes.each do |vote| %>
-					<div>
-            <% vote.vote_location.to_i.times do %>
-              <i class="fas fa-star"></i>
-            <% end %>         
-					</div>
-				<% end %>
+				<% @vote_check.vote_location.times do %>
+					<i class="fas fa-star"></i>
+				<% end %>			
 			</div>
 		</div>
 
@@ -33,15 +25,32 @@
 			<p>Size</p>
 			<p><%= @property.lettable_area %> EUR / m²</p>
 			<div>	
-				<% @property.votes.each do |vote| %>
-					<div>
-						<% vote.vote_size.to_i.times do %>
-							<i class="fas fa-star"></i>
-						<% end %>			
-					</div>
-				<% end %>
+				<% @vote_check.vote_size.times do %>
+					<i class="fas fa-star"></i>
+				<% end %>			
 			</div>
 		</div>
 				
+		<div class="rating-row">
+			<p>Your average rating</p>
+			<p></p>
+			<div>	
+					<p><%= @vote_check.vote_average %> <i class="fas fa-star"></i></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="col-sm-4">
+	<h3>Votes by your team</h3>
+	<div>
+		<% if @votes_collaborators.empty? %>
+			<p>Your the first voter</p>
+		<% else %>
+			<% @votes_collaborators.each do |vote| %> 
+				<img class="avatar-vote" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /> 
+				<p><%= vote.vote_average %> <i class="fas fa-star"></i></p>
+			<% end %>
+		<% end %>
 	</div>
 </div>

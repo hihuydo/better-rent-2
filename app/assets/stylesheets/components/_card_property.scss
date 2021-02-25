@@ -1,3 +1,6 @@
+.properties {
+  display: flex;
+}
 .property-cards {
   width: 70%;
   display: flex;
@@ -6,7 +9,9 @@
 }
 
 .property-map {
-  width: 30%;
+  img {
+    border-style: none;
+  }
 }
 
 .property-card {
@@ -14,7 +19,7 @@
   background-color: $card-bg-color;
   padding: 1rem;
   border-radius: $spacer;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0 1rem 1rem 0;
 
   button {
     border: none;

@@ -58,6 +58,16 @@ ul li {
   font-size: 28px;
   margin-left: $spacer * 2;
   margin-right: $spacer * 2;
+  margin-bottom: $spacer * 5;
+}
+
+.fa-sign-out-alt {
+  color: $navi-icon-inactive;
+  position: absolute;
+  bottom: $spacer * 2;
+  font-size: 28px;
+  margin-left: $spacer * 2;
+  margin-right: $spacer * 2;
 }
 
 

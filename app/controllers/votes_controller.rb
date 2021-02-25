@@ -26,6 +26,8 @@ class VotesController < ApplicationController
     @project = Project.find(params[:project_id])
     @vote.property = @property
     @vote.user = current_user
+    @vote.stage = @project.stage
+    @vote.vote_average =  ((@vote.vote_price.to_f + @vote.vote_location.to_f + @vote.vote_size.to_f) / 3.to_f).round(1)
 
     if @vote.save!
       redirect_to project_property_path(@project, @property)

@@ -17,7 +17,7 @@ user_1 = User.create!(
   email: 'Chiara@chiara.com',
   password: '123456',
   company:'better rent',
-  admin: false 
+  admin: false
 )
 
 puts "User #{user_1.email} created"
@@ -41,27 +41,28 @@ puts "Project: #{project_1.name} created"
 
 property_1 = Property.create!(
   project_id: project_1.id,
-  user_id: user_1.id, 
+  user_id: user_1.id,
   title: 'Office at friedrichstrasse',
   street: 'Friedrichstraße',
-  number: '55', 
+  number: '55',
   zipcode: '10117 Berlin',
-  city: 'Berlin', 
-  lettable_area: 4500, 
-  rent_per_sqm: 25, 
-  active: true
+  city: 'Berlin',
+  lettable_area: 4500,
+  rent_per_sqm: 25,
+  active: true,
+  cloudinary_id: 'ws768u81ducfgn8hpqdv5z5uggiu'
 )
 puts "Property: #{property_1.street} created"
 
 
 participants_1 = Participant.create!(
-  user_id: user_1.id, 
+  user_id: user_1.id,
   project_id: project_1.id
 )
 puts "Participant #{participants_1.id} created"
 
 participants_2 = Participant.create!(
-  user_id: user_2.id, 
+  user_id: user_2.id,
   project_id: project_1.id
 )
 puts "Participant #{participants_2.id} created"

@@ -1,13 +1,24 @@
-
 h1 {
   margin-bottom: $spacer * 2;
 }
 
-.container {
-   color: $text-color;
+.project-intro {
+  margin-bottom: 100px;
 }
 
-.container-projects {
-  align-items: center;
-  justify-content: center;
+.stage-headline {
+  color: $link-color;
+  font-size: 0.85rem;
+}
+
+.stages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacer * 2;
+  // margin-right: 3.5rem;
+
+  hr {
+    background-color: $link-color;
+    margin-bottom: $spacer * 2;
+  }
 }

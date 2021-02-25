@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="sidebar">
-      <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+      <img class="avatar" src="https://res.cloudinary.com/lewagon-training/image/upload/v1614273903/avatar_megan_er2nhn.png" />
       <div class="icon-bar">
           <ul id="nav">
             <%= link_to root_path do  %>
@@ -20,6 +20,14 @@
       <%= link_to new_project_path do %>
         <i class="fas fa-plus-circle"></i>
       <% end %>
+
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, :method=>'delete' do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path %>
+    <% end %>
     </div>
 </div>
 

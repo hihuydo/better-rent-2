@@ -1,5 +1,5 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "#{@property.street} #{@property.number}, #{@property.zipcode} #{@property.city}"  %>
+<%= render 'pages/header', title: "Stage #{@project.stage}: #{@property.street} #{@property.number}, #{@property.zipcode} #{@property.city}"  %>
 
 <div class="property-container">
   <div class="col-sm-7">
@@ -9,7 +9,8 @@
         <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
       <% end %>
 
-    <% if @vote_check.empty? %>
+
+    <% if @vote_check.nil? %>
       <%= render 'votes/star_rating' %>
     <% else %>
       <%= render 'votes/voted' %>
@@ -30,7 +31,6 @@
     <div class="chat-box">
       <!-- <h2>Message going here</h2> -->
       <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614181587/Chat_swksf3.png" alt="Chat Messages">
-
     </div>
   </div>
 </div>
