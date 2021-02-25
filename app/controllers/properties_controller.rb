@@ -10,10 +10,17 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @project = Project.find(params[:project_id])
     @vote = Vote.new
+
     @user = current_user
     @vote.user = current_user
     # @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
-    @vote_check = Vote.find_by(user_id: current_user, property_id: @property.id)
+    @vote_check = Vote.find_by(user_id: current_user, property_id: @property.id, stage: @project.stage )
+
+    # Find all Votes in the stage for the team
+    @votes_all_team = Vote.where(property_id: @property.id, stage: @project.stage)
+    # Finde all votes of the collaborators in the team without the current user votes
+    @votes_collaborators = @votes_all_team.where.not(user_id: current_user)
+    # raise
   end
 
   def new

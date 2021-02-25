@@ -9,6 +9,7 @@
         <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
       <% end %>
 
+
     <% if @vote_check.nil? %>
       <%= render 'votes/star_rating' %>
     <% else %>

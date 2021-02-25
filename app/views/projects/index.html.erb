@@ -11,26 +11,47 @@
       <div class="stage-headline">Stage 1</div>
       <hr>
         <% @projects.each do |project|  %>
-          <div class="card-project">
-              <div class="project-name"><%= project.name%></div>
-              <div class="project-description"><%= project.description%></div>
+          <% if project.stage == 1 %>
+            <div class="card-project">
+                <div class="project-name"><%= project.name%></div>
+                <div class="project-description"><%= project.description%></div>
 
-              <div class="project-CTA">
-                <div>
-                  <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
-                  <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                <div class="project-CTA">
+                  <div>
+                    <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
+                    <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                  </div>
+
+                  <%= link_to project_properties_path(project) do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
                 </div>
-
-                <%= link_to project_properties_path(project) do %>
-                  <i class="far fa-eye"></i>
-                <% end %>
-              </div>
-          </div>
+            </div>
+          <% end %>
         <% end %>
     </div>
     <div>
       <div class="stage-headline">Stage 2</div>
       <hr>
+        <% @projects.each do |project|  %>
+          <% if project.stage == 2 %>
+            <div class="card-project">
+                <div class="project-name"><%= project.name%></div>
+                <div class="project-description"><%= project.description%></div>
+
+                <div class="project-CTA">
+                  <div>
+                    <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
+                    <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                  </div>
+
+                  <%= link_to project_properties_path(project) do %>
+                    <i class="far fa-eye"></i>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        <% end %>
     </div>
   </div>
 </div>
