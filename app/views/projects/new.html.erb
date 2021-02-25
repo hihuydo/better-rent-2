@@ -1,9 +1,12 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "New Projects" %>
-
+<%= render 'pages/header', title: "New Project" %>
+  <br>
+  <br>
+  <br>
+  <br>
 <div class="container">
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-  <h2>create a new project</h2>
+<!--   <h2>create a new project</h2> -->
     <%= simple_form_for @project do |f| %>
       <%= f.input :name %>
       <%= f.input :description %>

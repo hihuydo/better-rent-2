@@ -1,8 +1,12 @@
+<%= render 'pages/sidebar' %>
+<%= render 'pages/header', title: "Edit property: #{@property.title}" %>
+  <br>
+  <br>
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <div class="property_card">
-      <h1>update @property.title</h1>
+<!--       <h1>update @property.title</h1> -->
         <%= simple_form_for [ @project, @property ] do |f| %>
           <%= f.input :title, placeholder: @property.title, label:false %>
           <%= f.input :description, placeholder: 'Describe the offer', label:false %>
@@ -20,4 +24,5 @@
       </div>
     </div>
   </div>
+  <p><%= link_to 'back to your properties',  project_properties_path %></p>
 </div>
