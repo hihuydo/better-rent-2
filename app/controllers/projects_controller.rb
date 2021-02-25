@@ -7,12 +7,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @properties = Property.find(params[:id]) # probably needs to be refactored to get all properties of that project
+    @properties = @project.properties # probably needs to be refactored to get all properties of that project
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
         lng: prop.longitude
       }
+    end
   end
 
   def new

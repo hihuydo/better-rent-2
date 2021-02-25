@@ -1,3 +1,7 @@
 <%= render 'pages/sidebar' %>
 <%= render 'pages/header', title: "This is showing project" %>
 
+<div id="map"
+     style="margin-left: 80%; width: 20%; height: 800px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
