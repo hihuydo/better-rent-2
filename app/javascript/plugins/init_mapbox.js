@@ -5,13 +5,13 @@ const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/tobiasmentz/ckll67pfq0lhr17ppcju8t4vn'
   });
 };
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({color: "#ff3f12"})
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
   });

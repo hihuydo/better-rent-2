@@ -4,6 +4,12 @@ class PropertiesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+    @markers = @properties.geocoded.map do |prop|
+      {
+        lat: prop.latitude,
+        lng: prop.longitude
+      }
+    end
   end
 
   def show
@@ -21,6 +27,7 @@ class PropertiesController < ApplicationController
     # Finde all votes of the collaborators in the team without the current user votes
     @votes_collaborators = @votes_all_team.where.not(user_id: current_user)
     # raise
+
   end
 
   def new

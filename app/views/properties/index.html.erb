@@ -36,9 +36,9 @@
     </div>
 
 
-    <div class="property-map">
-      <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614191979/map_lcsjzp.png" alt="Map">
-    </div>
+  <div id="map"
+    style="margin-left: 80%; width: 20%; height: 800px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>
