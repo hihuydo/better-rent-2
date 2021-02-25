@@ -10,8 +10,10 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @project = Project.find(params[:project_id])
     @vote = Vote.new
-
-    @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
+    @user = current_user
+    @vote.user = current_user
+    # @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
+    @vote_check = Vote.find_by(user_id: current_user, property_id: @property.id)
   end
 
   def new
@@ -46,6 +48,11 @@ class PropertiesController < ApplicationController
     project = Project.find(params[:project_id])
     @property.destroy
     redirect_to project_properties_path(project)
+  end
+
+  def change_stage
+    @project = Project.find(params[:id])
+    
   end
 
   private
