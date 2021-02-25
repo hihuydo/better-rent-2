@@ -13,30 +13,33 @@
     </div>
   </div>
 
-  <div class="property-cards">
-    <% @properties.each do |property|  %>
-      <div class="property-card">
-        <% property.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
-        <% end %>
-        <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
-        <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
-
-        <div class="property-CTA">
-          <div>
-            <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>
-            <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
-          </div>
-          <%= link_to project_property_path(params[:project_id],property) do %>
-            <i class="far fa-eye"></i>
+  <div class="properties">
+    <div class="property-cards">
+      <% @properties.each do |property|  %>
+        <div class="property-card">
+          <% property.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
           <% end %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+          <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+          <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
 
-  <div class="property-map">
-    <!-- MAP -->
+          <div class="property-CTA">
+            <div>
+              <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>
+              <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
+            </div>
+            <%= link_to project_property_path(params[:project_id],property) do %>
+              <i class="far fa-eye"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
+    <div class="property-map">
+      <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614191979/map_lcsjzp.png" alt="Map">
+    </div>
   </div>
 
 </div>

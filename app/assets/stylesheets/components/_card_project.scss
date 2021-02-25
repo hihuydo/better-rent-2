@@ -2,7 +2,6 @@
   width: 330px;
   height: auto;
   background-color: $card-bg-color;
-  // box-shadow: $card-box-shadow;
   padding: 1rem;
   border-radius: $spacer;
   margin: 0 1rem 1rem 0;
@@ -10,14 +9,41 @@
   button {
     border: none;
     border-radius: $spacer;
-    background-color: $link-color;
-    box-shadow: $card-box-shadow;
+    border: 1px solid $link-color;
+    font-size: 0.85rem;
+    background-color: transparent;
     padding: $spacer $spacer * 3;
     transition: all 0.3s;
 
     a {
       color: $text-color;
       text-decoration: none;
+      color: $link-color;
+    }
+
+    &:hover {
+      background-color: $link-color;
+
+      a {
+        color: #fff;
+      }
     }
   }
+}
+
+.project-CTA {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-name {
+  margin-top: $spacer;
+  font-size: $font-size-base;
+}
+
+.project-description {
+  font-size: 0.85rem;
+  color: $info-color;
+  margin-bottom: 50px;
 }
