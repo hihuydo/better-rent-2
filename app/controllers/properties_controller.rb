@@ -4,13 +4,18 @@ class PropertiesController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+    @markers = @properties.geocoded.map do |prop|
+      {
+        lat: prop.latitude,
+        lng: prop.longitude
+      }
+    end
   end
 
   def show
     @property = Property.find(params[:id])
     @project = Project.find(params[:project_id])
     @vote = Vote.new
-
     @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
   end
 
