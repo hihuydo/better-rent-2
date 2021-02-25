@@ -1,9 +1,12 @@
-
+<%= render 'pages/sidebar' %>
+<%= render 'pages/header', title: "Add a property" %>
+  <br>
+  <br>
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <div class="property_card">
-      <h1>create a property</h1>
+      <h1>add your own</h1>
         <%= simple_form_for [ @project, @property ] do |f| %>
           <%= f.input :title, placeholder: 'Title', label:false %>
           <%= f.input :description, placeholder: 'Describe the offer', label:false %>
