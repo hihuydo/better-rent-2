@@ -6,31 +6,32 @@
   <div class="row">
     <div class="col-sm">
       <div class="property_card">
-      <h1>add your own</h1>
-        <%= simple_form_for [ @project, @property ] do |f| %>
-          <%= f.input :title, placeholder: 'Title', label:false %>
-          <%= f.input :description, placeholder: 'Describe the offer', label:false %>
-          <%= f.input :street, placeholder: 'Street', label:false %>
-          <%= f.input :number, placeholder: 'Number', label:false %>
-          <%= f.input :floor, placeholder: 'Floor', label:false %>
-          <%= f.input :zipcode, placeholder: 'Zipcode', label:false %>
-          <%= f.input :city, placeholder: 'City', label:false %>
-          <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
-          <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
-          <%= f.input :availability, placeholder: 'Availabe from', label:false %>
-          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
-          <%= f.button :submit, "submit", class: "btn btn-primary" %>
-        <% end %>
+      <h1>Add a property</h1>
+        <div class="form-property">
+          <%= simple_form_for [ @project, @property ] do |f| %>
+            <%= f.input :street, placeholder: 'Street', label:false %>
+            <%= f.input :number, placeholder: 'Number', label:false %>
+            <%= f.input :zipcode, placeholder: 'Zipcode', label:false %>
+            <%= f.input :city, placeholder: 'City', label:false %>
+            <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
+            <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
+            <%= f.input :availability, placeholder: 'Availabe from', label:false %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
+            <%= f.button :submit, "submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <div class="col-sm">
     <div class="container">
       <div class="property_card">
-        <h1>add a property from the web</h1>
-        <%= simple_form_for [ @project, @property ] do |f| %>
-          <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
-        <%= f.button :submit, "submit", class: "btn btn-primary" %>
-        <% end %>
+        <h1>Add a property from the web</h1>
+        <div class="form-property">
+          <%= simple_form_for [ @project, @property ] do |f| %>
+            <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
+          <%= f.button :submit, "submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
