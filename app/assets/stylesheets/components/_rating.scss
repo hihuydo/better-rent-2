@@ -28,6 +28,12 @@
   color: $link-color;
 }
 
-.team {
-  display: relativ;
+.team-display {
+  display: flex;
+  align-items: flex-start;
+}
+
+.vote {
+  margin-right: 2*$spacer;
+  text-align: center;
 }
