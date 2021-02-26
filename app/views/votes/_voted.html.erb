@@ -43,13 +43,15 @@
 
 <div class="col-sm-4">
 	<h3>Votes by your team</h3>
-	<div>
+	<div class="team-display">
 		<% if @votes_collaborators.empty? %>
 			<p>Your the first voter</p>
 		<% else %>
-			<% @votes_collaborators.each do |vote| %> 
-				<img class="avatar-vote" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /> 
-				<p><%= vote.vote_average %> <i class="fas fa-star"></i></p>
+			<% @votes_collaborators.each do |vote| %>
+				<div class="vote">
+					<img class="avatar-vote" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /> 
+					<p><%= vote.vote_average %> <i class="fas fa-star"></i></p>
+				</div> 
 			<% end %>
 		<% end %>
 	</div>
