@@ -1,18 +1,14 @@
 <%= render 'pages/sidebar' %>
 <%= render 'pages/header', title: "Your team for project: #{@project.name}" %>
 
-
-<div>
-<h1 style="color: red;"><%= @project.user_id %></h1>
-</div>
-
 <div class="main-container">
-  <h1 style="color: red;"><%= @project.user_id %></h1>
+  <h1>This project was created by User: <%= @project.user_id %></h1>
 
   <button><%= link_to "Add", new_project_participant_path %></button>
 
   <% @participants.each do |participant| %>
-    <h1 style="color: red;"><%= participant.user_id %></h1>
+    <h1>User id: <%= participant.user_id %> Email: <%= participant.user.email %> </h1>
+  
       <button>
       <%= link_to "Delete", project_participant_path(params[:project_id], participant ), method: :delete, 
                                                                                       data: { confirm: "Are you sure?" } %>

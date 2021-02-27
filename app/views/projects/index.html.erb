@@ -21,13 +21,33 @@
                     <% if policy(project).edit? %>
                       <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
                     <% end %>
+
                     <% if policy(project).destroy? %>
                       <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
                     <% end %>
                   </div>
 
-                  <%= link_to project_properties_path(project) do %>
-                    <i class="far fa-eye"></i>
+                  <% project.participants.each do |participant| %>
+                    <% if current_user.id == participant.user_id %>
+                      <%= link_to project_participants_path(project) do %>
+                        <i class="fas fa-users"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+
+
+                  <% if policy(project).edit? %>
+                    <%= link_to new_project_participant_path(project) do %>
+                      <i class="fas fa-user-plus"></i>
+                    <% end %>
+                  <% end %>
+
+                  <% project.participants.each do |participant| %>
+                    <% if current_user.id == participant.user_id %>
+                      <%= link_to project_properties_path(project) do %>
+                        <i class="far fa-eye"></i>
+                      <% end %>
+                    <% end %>
                   <% end %>
                 </div>
             </div>
@@ -53,9 +73,27 @@
                     <% end %>
                   </div>
 
-                  <%= link_to project_properties_path(project) do %>
-                    <i class="far fa-eye"></i>
+                  <% project.participants.each do |participant| %>
+                    <% if current_user.id == participant.user_id %>
+                      <%= link_to project_participants_path(project) do %>
+                        <i class="fas fa-users"></i>
+                      <% end %>
+                    <% end %>
                   <% end %>
+
+                  <% if policy(project).edit? %>
+                    <%= link_to new_project_participant_path(project) do %>
+                      <i class="fas fa-user-plus"></i>
+                    <% end %>
+                  <% end %>
+
+                  <% if policy(project) %>
+                    <%= link_to project_properties_path(project) do %>
+                      <i class="far fa-eye"></i>
+                    <% end %>
+                  <% end %>
+
+
                 </div>
             </div>
           <% end %>

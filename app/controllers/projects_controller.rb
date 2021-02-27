@@ -24,8 +24,10 @@ class ProjectsController < ApplicationController
     # function checked and needed
     # everyone can create a project
     @project = Project.new
-    @user = current_user
     authorize @project
+    
+    # just needed for test purposes - can be deletet
+    @user = current_user
   end
 
   def create
@@ -36,6 +38,8 @@ class ProjectsController < ApplicationController
     @project.user = current_user
 
     if @project.save!
+      current_project = Project.find(@project.id)
+      Participant.create!(project_id: current_project.id, user_id: current_user.id)
       redirect_to projects_path
     else
       redirect_to projects_path(@project)
@@ -46,8 +50,9 @@ class ProjectsController < ApplicationController
     # function checked and needed
     # only person who create can edit 
     @project = Project.find(params[:id])
-    @user = current_user
     authorize @project
+
+    @user = current_user
   end
 
   def update
@@ -55,6 +60,7 @@ class ProjectsController < ApplicationController
     # only person who create can update
     @project = Project.find(params[:id])
     authorize @project
+    
     @project.update(project_params)
     redirect_to projects_path
   end
@@ -67,6 +73,11 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+    authorize @project
+  end
 
   def project_params
     params.require(:project).permit(:name, :stage, :description)

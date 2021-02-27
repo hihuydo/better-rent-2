@@ -1,15 +1,18 @@
 class VotesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @votes = Vote.all
-  end
+  # Do we need?
+  # def index
+  #   @votes = Vote.all
+  # end
 
   def show
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id]) 
     @vote.user = current_user
     @vote = Vote.find(params[:id]) 
+    authorize @vote
+
   end 
 
   
@@ -17,11 +20,13 @@ class VotesController < ApplicationController
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
     @vote = Vote.new
+    authorize @vote
     @vote.user = current_user
   end
 
   def create
     @vote = Vote.new(vote_params)
+    authorize @vote
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
     @vote.property = @property
@@ -38,12 +43,17 @@ class VotesController < ApplicationController
   end
 
   def destroy
+    @vote = Vote.all
+    # skiping pundit because you can only see the button if you are a participant
+    # skip_policy_scope
+
+    @vote.destroy_all
+    authorize @vote
+
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
-    @vote = Vote.all
-    @vote.destroy_all
-    redirect_to project_property_path(@project, @property)
 
+    redirect_to project_property_path(@project, @property)
   end
 
   private
