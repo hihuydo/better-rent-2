@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
     @markers = @properties.geocoded.map do |prop|

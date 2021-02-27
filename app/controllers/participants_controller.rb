@@ -1,8 +1,11 @@
 class ParticipantsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @project = Project.find(params[:project_id])
-    @participants = @project.participants
+
+    @participants = Participant.all
+    # @participants = @project.participants
   end
 
   def new
@@ -11,19 +14,26 @@ class ParticipantsController < ApplicationController
   end
 
   def create
-    @participant = Participant.new
+    @participant = Participant.new(participant_params)
     @project = Project.find(params[:project_id])
-    @user = current_user
     @participant.project_id = @project.id
-    @participant.user = @user
-    @participant.save
-    # redirect_to
+
+    if @participant.save!
+      redirect_to project_participants_path
+    else
+      redirect_to projects_path(@project)
+    end
   end
 
   def destroy
     @participant = Participant.find(params[:id])
-    participant = Participant.find(params[:project_id])
     @participant.destroy
-    # redirect_to
+      redirect_to project_participants_path
+  end
+
+  private
+
+  def participant_params
+    params.require(:participant).permit(:project_id, :user_id)
   end
 end
