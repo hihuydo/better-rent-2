@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   resources :projects do
     resources :properties do # may need to limit this later
       resources :votes, only: [ :index, :show, :new, :create, :destroy ]
+      resources :chatrooms, only: :show do
+        resources :messages, only: [ :create, :destroy ]
+      end
     end
     resources :participants, only: [ :index, :new, :create, :destroy ]
   end
-  
 end

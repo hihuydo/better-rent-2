@@ -1,0 +1,19 @@
+
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+
+<% @chatroom.messages.each do |message| %>
+    <div class="message-container" id="message-<%= message.id %>">
+      <i class="author">
+        <span><%= message.user.email %></span>
+        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
+          <%= link_to "(X)", project_property_path(params[:project_id],message), method: :delete, data: { confirm: "Are you sure?" } %>
+        </small>
+      </i>
+      <p><%= message.content %></p>
+    </div>
+  <% end %>
+</div>
+
+  <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?" %>
+  <% end %>
