@@ -7,12 +7,12 @@ class VotesController < ApplicationController
 
   def show
     @property = Property.find(params[:property_id])
-    @project = Project.find(params[:project_id]) 
+    @project = Project.find(params[:project_id])
     @vote.user = current_user
-    @vote = Vote.find(params[:id]) 
-  end 
+    @vote = Vote.find(params[:id])
+  end
 
-  
+
   def new
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
@@ -43,7 +43,6 @@ class VotesController < ApplicationController
     @vote = Vote.all
     @vote.destroy_all
     redirect_to project_property_path(@project, @property)
-
   end
 
   private

@@ -18,6 +18,9 @@ class PropertiesController < ApplicationController
     @project = Project.find(params[:project_id])
     @vote = Vote.new
 
+    @chatroom = Chatroom.find(@property.chatroom.id)
+    @message = Message.new
+
     @user = current_user
     @vote.user = current_user
     # @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
@@ -42,8 +45,11 @@ class PropertiesController < ApplicationController
     @user = current_user
     @property.project_id = @project.id
     @property.user = @user
-    @property.save
-    redirect_to project_properties_path(@project)
+    if @property.save
+      p = Property.find(@property.id)
+      @chatroom = Chatroom.create(property_id: p.id)
+      redirect_to project_properties_path(@project)
+    end
   end
 
   def edit
@@ -67,7 +73,7 @@ class PropertiesController < ApplicationController
 
   def change_stage
     @project = Project.find(params[:id])
-    
+
   end
 
   private
