@@ -18,8 +18,12 @@
 
                 <div class="project-CTA">
                   <div>
-                    <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
-                    <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                    <% if policy(project).edit? %>
+                      <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
+                    <% end %>
+                    <% if policy(project).destroy? %>
+                      <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                    <% end %>
                   </div>
 
                   <%= link_to project_properties_path(project) do %>
@@ -41,8 +45,12 @@
 
                 <div class="project-CTA">
                   <div>
-                    <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
-                    <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                    <% if policy(project).edit? %>
+                      <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
+                    <% end %>
+                    <% if policy(project).destroy? %>
+                      <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                    <% end %>
                   </div>
 
                   <%= link_to project_properties_path(project) do %>
