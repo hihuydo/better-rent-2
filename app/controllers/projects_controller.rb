@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
     authorize @project
     @project.user = current_user
 
-    if @project.save
+    if @project.save!
       redirect_to projects_path
     else
       redirect_to projects_path(@project)

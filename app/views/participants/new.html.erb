@@ -1,2 +1,14 @@
-<%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "Add your team" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="property_card">
+      <h1>Add a property</h1>
+        <div class="form-property">
+          <%= simple_form_for [ @project, @participant ] do |f| %>
+            <%= f.input :user_id %>
+            <%= f.button :submit, "submit", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>

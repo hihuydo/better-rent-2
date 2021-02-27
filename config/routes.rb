@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :properties do # may need to limit this later
       resources :votes, only: [ :index, :show, :new, :create, :destroy ]
     end
+    resources :participants, only: [ :index, :new, :create, :destroy ]
   end
   
 end
