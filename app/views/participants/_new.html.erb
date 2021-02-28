@@ -2,11 +2,10 @@
   <div class="row">
     <div class="col-sm">
       <div class="property_card">
-      <h1>Add a participant</h1>
         <div class="form-property">
           <%= simple_form_for [ @project, @participant ] do |f| %>
-            <%= f.input :user_id %>
-            <%= f.button :submit, "submit", class: "btn btn-primary" %>
+            <%= f.collection_select :user_id, @users, :id, :email %>
+            <%= f.button :submit, "add", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>

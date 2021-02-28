@@ -5,17 +5,20 @@ class ParticipantsController < ApplicationController
     @project = Project.find(params[:project_id])
     @participants = Participant.where(project_id: @project.id)
     skip_policy_scope
-    # @participants = policy_scope(Participant)
+
     # just needed for test purposes - can be dele@tet
     @user = current_user
 
+    @participant = Participant.new
+    @users = User.all
   end
 
   def new
     @project = Project.find(params[:project_id])
     @participant = Participant.new
-    # function checked and needed
-    # only the user who created the project can add team members
+    @users = User.all
+
+    # authorization done by if else statements
     authorize @participant
 
     @user = current_user
@@ -23,8 +26,8 @@ class ParticipantsController < ApplicationController
 
   def create
     @participant = Participant.new(participant_params)
-    # function checked and needed
-    # only the user who created the project can add team members
+
+    # authorization done by if else statements
     authorize @participant
 
     @project = Project.find(params[:project_id])
@@ -42,10 +45,10 @@ class ParticipantsController < ApplicationController
 
   def destroy
     @participant = Participant.find(params[:id])
-    # only the user who created the project can add team members
+    @participant.destroy
+    # authorization done by if else statements
     authorize @participant
 
-    @participant.destroy
     redirect_to project_participants_path
   end
 

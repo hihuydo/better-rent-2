@@ -8,9 +8,9 @@ class ParticipantPolicy < ApplicationPolicy
   def create?
     return true
   end
-  
+
   def destroy?
-    record.user == user
+    return true
   end
 
 end

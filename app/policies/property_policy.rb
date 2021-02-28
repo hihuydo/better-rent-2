@@ -18,6 +18,6 @@ class PropertyPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
-  end    
+    record.user == user or user.admin?
+  end
 end

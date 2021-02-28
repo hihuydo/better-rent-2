@@ -61,7 +61,8 @@ class PropertiesController < ApplicationController
     @property.project_id = @project.id
     @user = current_user
     @property.user = @user
-    if @property.save
+
+    if @property.save!
       p = Property.find(@property.id)
       @chatroom = Chatroom.create(property_id: p.id)
       redirect_to project_properties_path(@project)
@@ -92,17 +93,17 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
-    project = Project.find(params[:project_id])
     @property.destroy
     authorize @property
-
-    redirect_to project_properties_path(project)
+    
+    redirect_to project_properties_path(@project)
   end
 
-  def change_stage
-    @project = Project.find(params[:id])
-  end
+  # def change_stage
+  #   @project = Project.find(params[:id])
+  # end
 
   private
 

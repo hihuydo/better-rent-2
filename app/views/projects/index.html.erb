@@ -31,7 +31,7 @@
                       <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
                     <% end %>
                   </div>
-
+                  
                   <% project.participants.each do |participant| %>
                     <% if current_user.id == participant.user_id %>
                       <%= link_to project_participants_path(project) do %>

@@ -7,19 +7,6 @@ class ProjectsController < ApplicationController
     @user = current_user
   end
 
-  # Do we use this? 
-  
-  # def show
-  #   @project = Project.find(params[:id])
-  #   @properties = @project.properties # probably needs to be refactored to get all properties of that project
-  #   @markers = @properties.geocoded.map do |prop|
-  #     {
-  #       lat: prop.latitude,
-  #       lng: prop.longitude
-  #     }
-  #   end
-  # end
-
   def new
     # function checked and needed
     # everyone can create a project

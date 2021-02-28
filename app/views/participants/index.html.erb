@@ -1,19 +1,26 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "Your team for project: #{@project.name}" %>
+<%= render 'pages/header', title: "Your team" %>
 
 <div class="main-container">
-  <h1>This project was created by User: <%= @project.user_id %></h1>
+  <h1><%= @project.name %></h1>
+  <h3> Project Owner <%= @project.user_id %></h1>
 
-  <button><%= link_to "Add", new_project_participant_path %></button>
+  <% if current_user.id == @project.user_id %>
+    <%= render 'participants/new' %> 
+  <% end %>
+
 
   <% @participants.each do |participant| %>
+    <img class="avatar" src="https://res.cloudinary.com/lewagon-training/image/upload/v1614273903/avatar_megan_er2nhn.png" />
     <h1>User id: <%= participant.user_id %> Email: <%= participant.user.email %> </h1>
-  
-      <button>
-      <%= link_to "Delete", project_participant_path(params[:project_id], participant ), method: :delete, 
-                                                                                      data: { confirm: "Are you sure?" } %>
-    </button> 
-  <% end %>
+    
+    <% if current_user.id == @project.user_id %>
+        <button>
+          <%= link_to "Delete", project_participant_path(params[:project_id], participant ), method: :delete, 
+                                                                                        data: { confirm: "Are you sure?" } %>
+        </button> 
+      <% end  %>
+    <% end %>
 
 </div>
 
