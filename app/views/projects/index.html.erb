@@ -3,7 +3,12 @@
 
 <div class="main-container">
   <div class="project-intro">
-    <p>Start here by adding a project. Add the city or location where you are choosing a new space.</p>
+    <div>
+      <p>Start here by adding a project. Add the city or location where you are choosing a new space.</p>
+      <% if user_signed_in? %>
+        <i class="fas fa-plus"></i> <%= link_to "create a new project", new_project_path, class: 'create-property' %>
+      <% end %>
+    </div>
   </div>
 
   <div class="stages">

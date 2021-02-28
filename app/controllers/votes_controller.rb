@@ -8,14 +8,19 @@ class VotesController < ApplicationController
 
   def show
     @property = Property.find(params[:property_id])
-    @project = Project.find(params[:project_id]) 
+    @project = Project.find(params[:project_id])
     @vote.user = current_user
+<<<<<<< HEAD
     @vote = Vote.find(params[:id]) 
     authorize @vote
 
   end 
+=======
+    @vote = Vote.find(params[:id])
+  end
 
-  
+>>>>>>> master
+
   def new
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
@@ -48,10 +53,12 @@ class VotesController < ApplicationController
     # skip_policy_scope
 
     @vote.destroy_all
+
     authorize @vote
 
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
+
 
     redirect_to project_property_path(@project, @property)
   end
