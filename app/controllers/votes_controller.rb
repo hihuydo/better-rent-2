@@ -1,25 +1,16 @@
 class VotesController < ApplicationController
   before_action :authenticate_user!
 
-  # Do we need?
-  # def index
-  #   @votes = Vote.all
-  # end
-
   def show
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
     @vote.user = current_user
-<<<<<<< HEAD
+
     @vote = Vote.find(params[:id]) 
     authorize @vote
-
   end 
-=======
-    @vote = Vote.find(params[:id])
-  end
 
->>>>>>> master
+
 
   def new
     @property = Property.find(params[:property_id])

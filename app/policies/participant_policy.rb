@@ -13,4 +13,12 @@ class ParticipantPolicy < ApplicationPolicy
     return true
   end
 
+  def change_stage
+    return true
+  end
+
+  def progress
+    return true
+  end 
+
 end

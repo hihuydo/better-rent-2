@@ -17,4 +17,12 @@ class ProjectPolicy < ApplicationPolicy
     record.user == user
   end     
 
+  def change_stage?
+    return true
+  end
+
+  def progress?
+    return true
+  end 
+
 end
