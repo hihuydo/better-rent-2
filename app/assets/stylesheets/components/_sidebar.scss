@@ -51,7 +51,7 @@ ul li:hover {
 //   transition: 0.3s ease;
 // }
 
-.active {
+ul li.active {
   background-color: $navi-tag-active;
   color: $navi-icon-active;
   border-radius: 0px 5px 5px 0px;
