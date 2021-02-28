@@ -96,24 +96,24 @@ end
 property_1.save
 puts "Property: #{property_1.street} created"
 
-property_2_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614277920/3vccih7zons3xh57buiru40o4crn.jpg']
-property_2 = Property.new(
-  project_id: project_1.id,
-  user_id: user_1.id,
-  title: 'Office at Münzstraße',
-  street: 'Münzstraße',
-  number: '55',
-  zipcode: '10117 Berlin',
-  city: 'Berlin',
-  lettable_area: 4500,
-  rent_per_sqm: 25,
-  active: true,
-)
-property_2_photos.each do |img|
-  property_2.photos.attach(io: URI.open(img), filename: 'muenzstrasse.jpg', content_type: 'image/jpg')
-end
-property_2.save
-puts "Property: #{property_2.street} created"
+# property_2_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614277920/3vccih7zons3xh57buiru40o4crn.jpg']
+# property_2 = Property.new(
+#   project_id: project_1.id,
+#   user_id: user_1.id,
+#   title: 'Office at Münzstraße',
+#   street: 'Münzstraße',
+#   number: '55',
+#   zipcode: '10117 Berlin',
+#   city: 'Berlin',
+#   lettable_area: 4500,
+#   rent_per_sqm: 25,
+#   active: true,
+# )
+# property_2_photos.each do |img|
+#   property_2.photos.attach(io: URI.open(img), filename: 'muenzstrasse.jpg', content_type: 'image/jpg')
+# end
+# property_2.save
+# puts "Property: #{property_2.street} created"
 
 property_3_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614183491/bas1bztz1a28lvf1djnqdexcwd4j.png']
 property_3 = Property.new(
