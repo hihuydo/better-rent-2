@@ -1,6 +1,8 @@
 <div class="wrapper">
     <div class="sidebar">
-      <img class="avatar" src="https://res.cloudinary.com/lewagon-training/image/upload/v1614273903/avatar_megan_er2nhn.png" />
+      <% current_user.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, crop: :fill, class: "avatar" %>
+      <% end %>
       <div class="icon-bar">
           <ul id="nav">
             <%= link_to root_path do  %>
@@ -26,3 +28,4 @@
     <% end %>
     </div>
 </div>
+

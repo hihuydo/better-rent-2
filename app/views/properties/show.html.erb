@@ -1,7 +1,13 @@
 <%= render 'pages/sidebar' %>
 <%= render 'pages/header', title: "Stage #{@project.stage}: #{@property.street} #{@property.number}, #{@property.zipcode} #{@property.city}"  %>
 
-<div class="property-container">
+<div class="main-container">
+  <div class="sub-header-properties">
+    <div>
+      On this pproperty page you can vote for one property. Remember: every vote counts!
+    </div>
+  </div>
+
   <div class="col-sm-7">
 
     <div class="property-picture">

@@ -12,23 +12,61 @@ Property.destroy_all
 Project.destroy_all
 User.destroy_all
 
-
-user_1 = User.create!(
+user_1_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614538014/chiara_t4ezqv.png']
+user_1 = User.new(
   email: 'Chiara@chiara.com',
   password: '123456',
   company:'better rent',
-  admin: false
+  admin: false,
+  user_name: 'Chiara'
 )
+user_1_photos.each do |img|
+  user_1.photos.attach(io: URI.open(img), filename: 'chiara.png', content_type: 'image/png')
+end
+user_1.save
+puts "User #{user_1.user_name} created"
 
-puts "User #{user_1.email} created"
-
-user_2 = User.create!(
+user_2_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614538014/megan_rzqrwg.png']
+user_2 = User.new(
   email: 'megan@megan.com',
   password: '123456',
   company:'better-rent',
-  admin: true
+  admin: true,
+  user_name: 'Megan'
 )
-puts "User #{user_2.email} created"
+user_2_photos.each do |img|
+  user_2.photos.attach(io: URI.open(img), filename: 'megan.png', content_type: 'image/png')
+end
+user_2.save
+puts "User #{user_2.user_name} created"
+
+user_3_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614538014/tobi_yn5iay.png']
+user_3 = User.new(
+  email: 'tobi@tobi.com',
+  password: '123456',
+  company:'better-rent',
+  admin: true,
+  user_name: 'Tobias'
+)
+user_3_photos.each do |img|
+  user_3.photos.attach(io: URI.open(img), filename: 'tobi.png', content_type: 'image/png')
+end
+user_3.save
+puts "User #{user_3.user_name} created"
+
+user_4_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614538014/huy_ucvwcu.png']
+user_4 = User.new(
+  email: 'huy@huy.com',
+  password: '123456',
+  company:'better-rent',
+  admin: true,
+  user_name: 'Huy'
+)
+user_4_photos.each do |img|
+  user_4.photos.attach(io: URI.open(img), filename: 'huy.png', content_type: 'image/png')
+end
+user_4.save
+puts "User #{user_4.user_name} created"
 
 
 project_1 = Project.create!(
@@ -58,24 +96,24 @@ end
 property_1.save
 puts "Property: #{property_1.street} created"
 
-property_2_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614182828/28uu70gvfuef1mkbd6u7uzla5ayq.jpg']
-property_2 = Property.new(
-  project_id: project_1.id,
-  user_id: user_1.id,
-  title: 'Office at Münzstraße',
-  street: 'Münzstraße',
-  number: '55',
-  zipcode: '10117 Berlin',
-  city: 'Berlin',
-  lettable_area: 4500,
-  rent_per_sqm: 25,
-  active: true,
-)
-property_2_photos.each do |img|
-  property_2.photos.attach(io: URI.open(img), filename: 'muenzstrasse.jpg', content_type: 'image/jpg')
-end
-property_2.save
-puts "Property: #{property_2.street} created"
+# property_2_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614277920/3vccih7zons3xh57buiru40o4crn.jpg']
+# property_2 = Property.new(
+#   project_id: project_1.id,
+#   user_id: user_1.id,
+#   title: 'Office at Münzstraße',
+#   street: 'Münzstraße',
+#   number: '55',
+#   zipcode: '10117 Berlin',
+#   city: 'Berlin',
+#   lettable_area: 4500,
+#   rent_per_sqm: 25,
+#   active: true,
+# )
+# property_2_photos.each do |img|
+#   property_2.photos.attach(io: URI.open(img), filename: 'muenzstrasse.jpg', content_type: 'image/jpg')
+# end
+# property_2.save
+# puts "Property: #{property_2.street} created"
 
 property_3_photos = ['https://res.cloudinary.com/lewagon-training/image/upload/v1614183491/bas1bztz1a28lvf1djnqdexcwd4j.png']
 property_3 = Property.new(

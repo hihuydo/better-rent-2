@@ -4,9 +4,14 @@ class Property < ApplicationRecord
   has_many_attached :photos
   has_one :chatroom, dependent: :destroy
   has_many :messages, through: :chatroom, dependent: :destroy
+  after_create :create_chatroom
 
   def address
     [street, number, zipcode, city].compact.join(', ')
+  end
+
+  def self.create_chatroom
+    self.chatroom.create!
   end
 
   geocoded_by :address
