@@ -10,6 +10,22 @@
       <% if user_signed_in? %>
         <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
       <% end %>
+
+      <div>
+        <p> Project details </p>
+        <%= link_to project_participants_path do  %>
+          <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+        <% end %>
+        <p>casted votes: <i class="fas fa-vote-yea"></i> <%= @all_votes_stage_1 %> Casted </p>
+        <p> Expected Votes in this stage: <%= @properties.count * @participants.count %> </p>
+
+        <% if @properties.count * @participants.count == @all_votes_stage_1 %>
+          <p>All Votes casted</p>
+          <button>change stage</button>
+        <% end %>
+
+      </div>
+
     </div>
   </div>
 
@@ -22,6 +38,15 @@
           <% end %>
           <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
           <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+
+
+          <div class="property-info">
+            <i class="fas fa-vote-yea"></i> <%= property.votes.count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+            <% if property.votes.count == @participants.count %>
+              <p> All Vote casted </p>
+            <% end %>
+          </div>
+
           <div class="property-CTA">
             <div>
               <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>

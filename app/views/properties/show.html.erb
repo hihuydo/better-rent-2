@@ -15,6 +15,8 @@
         <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
       <% end %>
 
+      <%= link_to "Back to project page", project_properties_path(@project)  %>
+
 
     <% if @vote_check.nil? %>
       <%= render 'votes/star_rating' %>

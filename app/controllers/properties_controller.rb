@@ -5,6 +5,37 @@ class PropertiesController < ApplicationController
     @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+    @participants = Participant.where(project_id: @project.id)
+
+    # Stage one Vote count
+    @vote_array_1 = []
+    @properties.each do |property| 
+      @vote_array_1 <<  Vote.where(property_id: property.id, stage: 1).count
+    end
+    @all_votes_stage_1 =  @vote_array_1.nil? ? 0 : @vote_array_1.sum 
+
+    # Stage two Vote count
+    @vote_array_2 = []
+    @properties.each do |property| 
+      @vote_array_2 <<  Vote.where(property_id: property.id, stage: 2).count
+    end
+    @all_votes_stage_2 = @vote_array_2.nil? ? 0 : @vote_array_1.sum 
+
+    # Stage one Vote average
+    @vote_array_average_1 = []
+    @average_1 = 0
+    @properties.each do |property| 
+      @vote_array_average_1 << Vote.find_by(property_id: property.id, stage: 1)
+      @vote_array_average_1.each do |vote|
+        @average_1 += vote.vote_average
+      end
+    end
+
+    raise
+
+
+
+
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
@@ -30,8 +61,6 @@ class PropertiesController < ApplicationController
     @votes_all_team = Vote.where(property_id: @property.id, stage: @project.stage)
     # Finde all votes of the collaborators in the team without the current user votes
     @votes_collaborators = @votes_all_team.where.not(user_id: current_user)
-    # raise
-
   end
 
   def new
@@ -71,10 +100,6 @@ class PropertiesController < ApplicationController
     redirect_to project_properties_path(project)
   end
 
-  def change_stage
-    @project = Project.find(params[:id])
-
-  end
 
   private
 
