@@ -2,28 +2,31 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = Project.all
-  end
-
-  def show
-    @project = Project.find(params[:id])
-    @properties = @project.properties # probably needs to be refactored to get all properties of that project
-    @markers = @properties.geocoded.map do |prop|
-      {
-        lat: prop.latitude,
-        lng: prop.longitude
-      }
-    end
+    # function checked and needed
+    @projects = policy_scope(Project).order(created_at: :desc)
+    @user = current_user
   end
 
   def new
+    # function checked and needed
+    # everyone can create a project
     @project = Project.new
+    authorize @project
+    
+    # just needed for test purposes - can be deletet
+    @user = current_user
   end
 
   def create
+    # function checked and needed
+    # everyone can create a project
     @project = Project.new(project_params)
+    authorize @project
     @project.user = current_user
+
     if @project.save!
+      current_project = Project.find(@project.id)
+      Participant.create!(project_id: current_project.id, user_id: current_user.id)
       redirect_to projects_path
     else
       redirect_to projects_path(@project)
@@ -31,22 +34,53 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    # function checked and needed
+    # only person who create can edit 
     @project = Project.find(params[:id])
+    authorize @project
+
+    @user = current_user
   end
 
   def update
+    # function checked and needed
+    # only person who create can update
     @project = Project.find(params[:id])
+    authorize @project
+    
     @project.update(project_params)
     redirect_to projects_path
   end
 
   def destroy
     @project = Project.find(params[:id])
+    authorize @project
     @project.destroy
     redirect_to projects_path
   end
 
+  # def change_stage
+  #   @project = Project.find(params[:id])
+  #   skip_policy_scope
+  # end
+
+  # def progress
+  #   @project = Project.find(params[:id])
+  #   authorize @project
+
+  #   if @project.stage = 1
+  #     @project.stage = 2
+  #   else 
+  #     @project.stage = 1
+  #   end
+  # end
+
   private
+
+  def set_project
+    @project = Project.find(params[:id])
+    authorize @project
+  end
 
   def project_params
     params.require(:project).permit(:name, :stage, :description)

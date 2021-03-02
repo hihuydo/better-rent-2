@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="progress-container">
+    
+
+    <%= link_to change_stage_projects_path do  %>
+      <input type="radio" class="radio" input=":stage" name="progress" value="twentyfive" id="twentyfive" checked>
+      <label for="twentyfive" class="label">Stage</label>
+    <% end %>
+
+    <%= link_to change_stage_projects_path do  %>    
+    <input type="radio" class="radio" name="progress" value="fifty" id="fifty">
+    <label for="fifty" class="label">Stage 2</label>
+    <% end %>
+
+    <input type="radio" class="radio" name="progress" value="onehundred" id="onehundred">
+    <label for="onehundred" class="label">Your Office</label>
+
+    <div class="progress">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+</div>

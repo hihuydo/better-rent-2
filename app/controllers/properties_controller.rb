@@ -5,6 +5,10 @@ class PropertiesController < ApplicationController
     @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+
+    # skiping pundit because you can only see the button if you are a participant
+    skip_policy_scope
+
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
@@ -15,6 +19,8 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    authorize @property
+    
     @project = Project.find(params[:project_id])
     @vote = Vote.new
 
@@ -30,21 +36,32 @@ class PropertiesController < ApplicationController
     @votes_all_team = Vote.where(property_id: @property.id, stage: @project.stage)
     # Finde all votes of the collaborators in the team without the current user votes
     @votes_collaborators = @votes_all_team.where.not(user_id: current_user)
-    # raise
-
   end
 
   def new
     @project = Project.find(params[:project_id])
     @property = Property.new
+
+    # function checked and needed
+    # every member can create a property in the project
+    authorize @property
+
+    # just needed for test purposes - can be deletet
+    @user = current_user
   end
 
   def create
     @property = Property.new(property_params)
     @project = Project.find(params[:project_id])
-    @user = current_user
+
+    # function checked and needed
+    # only the user who created the project can add team members
+    authorize @property
+
     @property.project_id = @project.id
+    @user = current_user
     @property.user = @user
+
     if @property.save
       p = Property.find(@property.id)
       @chatroom = Chatroom.create(property_id: p.id)
@@ -54,27 +71,39 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    authorize @property
+
     @project = Project.find(params[:project_id])
+    
+    # just needed for test purposes - can be deletet
+    @user = current_user
   end
 
   def update
     @property = Property.find(params[:id])
+    authorize @property
+
     @project = Project.find(params[:project_id])
+
+    # just needed for test purposes - can be deletet
+    @user = current_user
+
     @property.update(property_params)
     redirect_to project_properties_path(@project)
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
-    project = Project.find(params[:project_id])
     @property.destroy
-    redirect_to project_properties_path(project)
+    authorize @property
+    
+    redirect_to project_properties_path(@project)
   end
 
-  def change_stage
-    @project = Project.find(params[:id])
-
-  end
+  # def change_stage
+  #   @project = Project.find(params[:id])
+  # end
 
   private
 
