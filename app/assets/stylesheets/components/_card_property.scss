@@ -69,3 +69,14 @@
     border-style: none;
   }
 }
+
+.CTA {
+  font-size: 0.85rem;
+  color: $info-color;
+  margin-right: 2px;
+
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
