@@ -2,7 +2,6 @@ class PropertiesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
 
@@ -17,6 +16,16 @@ class PropertiesController < ApplicationController
       @vote_array << Vote.where(property_id: property.id, stage: @project.stage).count
     end
     @all_votes =  @vote_array.nil? ? 0 : @vote_array.sum 
+
+    @vote_average_project = []
+    @properties.each do |property| 
+      property.votes.where(stage: @project.stage).each do |vote|
+        @vote_average_project << vote.vote_average
+      end
+    end
+    @vote_average = @vote_average_project.sum / (@participants.count * @properties.count)
+
+
 
     @markers = @properties.geocoded.map do |prop|
       {

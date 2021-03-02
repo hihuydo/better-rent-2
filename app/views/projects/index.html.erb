@@ -92,10 +92,12 @@
                       <i class="fas fa-user-plus"></i>
                     <% end %>
                   <% end %>
-
-                  <% if policy(project) %>
-                    <%= link_to project_properties_path(project) do %>
-                      <i class="far fa-eye"></i>
+                  
+                  <% project.participants.each do |participant| %>
+                    <% if current_user.id == participant.user_id %>
+                      <%= link_to project_properties_path(project) do %>
+                        <i class="far fa-eye"></i>
+                      <% end %>
                     <% end %>
                   <% end %>
 

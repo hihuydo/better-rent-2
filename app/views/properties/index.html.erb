@@ -42,10 +42,15 @@
             <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
             <% if property.votes.where(stage: @project.stage).count == @participants.count %>
               <p> All Vote casted </p>
+              <% vote_average = 0 %>
               <% property.votes.where(stage: @project.stage).each do |vote| %>
-                <%= vote.vote_average %>
+                <% vote_average += vote.vote_average %>
+              <% end %>
+              <% if vote_average / @participants.count > @vote_average %>
+                  <p>made it to stage 2</p>
               <% end %>
             <% end %>
+
           </div>
 
 
