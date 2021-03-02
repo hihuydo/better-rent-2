@@ -10,22 +10,7 @@ class PropertiesController < ApplicationController
 
     @participants = Participant.where(project_id: @project.id)
 
-    # Vote in the stage count
-    @vote_array = []
-    @properties.each do |property| 
-      @vote_array << Vote.where(property_id: property.id, stage: @project.stage).count
-    end
-    @all_votes =  @vote_array.nil? ? 0 : @vote_array.sum 
-
-    @vote_average_project = []
-    @properties.each do |property| 
-      property.votes.where(stage: @project.stage).each do |vote|
-        @vote_average_project << vote.vote_average
-      end
-    end
-    @vote_average = @vote_average_project.sum / (@participants.count * @properties.count)
-
-
+    @all_votes = vote_count_stage(@properties, @project)
 
     @markers = @properties.geocoded.map do |prop|
       {
@@ -45,7 +30,6 @@ class PropertiesController < ApplicationController
     @chatroom = Chatroom.find(@property.chatroom.id)
     @message = Message.new
 
-    @user = current_user
     @vote.user = current_user
     # @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
     @vote_check = Vote.find_by(user_id: current_user, property_id: @property.id, stage: @project.stage )
@@ -63,9 +47,6 @@ class PropertiesController < ApplicationController
     # function checked and needed
     # every member can create a property in the project
     authorize @property
-
-    # just needed for test purposes - can be deletet
-    @user = current_user
   end
 
   def create
@@ -77,8 +58,7 @@ class PropertiesController < ApplicationController
     authorize @property
 
     @property.project_id = @project.id
-    @user = current_user
-    @property.user = @user
+    @property.user = current_user
 
     if @property.save!
       p = Property.find(@property.id)
@@ -88,18 +68,16 @@ class PropertiesController < ApplicationController
   end
 
   def edit
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
     authorize @property
-
-    @project = Project.find(params[:project_id])
   end
 
   def update
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
     authorize @property
-
-    @project = Project.find(params[:project_id])
-
+    
     @property.update(property_params)
     redirect_to project_properties_path(@project)
   end
@@ -117,5 +95,14 @@ class PropertiesController < ApplicationController
 
   def property_params
     params.require(:property).permit!
+  end
+
+      
+  def vote_count_stage(properties, project)
+    vote_array = []
+    properties.each do |property| 
+      vote_array << Vote.where(property_id: property.id, stage: project.stage).count
+    end
+    return vote_array.nil? ? 0 : vote_array.sum 
   end
 end

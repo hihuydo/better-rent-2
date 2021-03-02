@@ -14,12 +14,15 @@
         <% if @property.photos.attached? %>
           <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
         <% end %>
+        <%= link_to "Back to project page", project_properties_path(@project)  %>
       <div class="description">
         <h3>Description of the property</h3>
         <p><%= @property.description %></p>
       </div>
     </div>
   </div>
+
+
 
 
     <div class="col-sm-6">

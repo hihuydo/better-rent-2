@@ -13,21 +13,10 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
-  def vote_average(property, project, participants)
-    vote_average_property = []
-    property.votes.where(stage: project.stage).each do |vote|
-      vote_average_property << vote.vote_average
-    end 
-    vote_average = vote_average_property.sum 
-    return vote_average
-  end
-
   private
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
-
-
 
 end
