@@ -1,20 +1,16 @@
 .properties {
   display: flex;
 }
-.property-cards {
-  width: 70%;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-}
 
-.property-map {
-  img {
-    border-style: none;
-  }
+.property-cards {
+  width: 75%;
+  // MOSAIK STYLE
+  column-count: 3;
+  column-gap: 0.25rem;
 }
 
 .property-card {
+  display: inline-block;
   width: 330px;
   background-color: $card-bg-color;
   padding: 1rem;
@@ -66,4 +62,21 @@
 
 .fa-eye {
   font-size: 2rem;
+}
+
+.property-map {
+  img {
+    border-style: none;
+  }
+}
+
+.CTA {
+  font-size: 0.85rem;
+  color: $info-color;
+  margin-right: 2px;
+
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
 }

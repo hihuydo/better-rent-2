@@ -38,3 +38,20 @@
   padding: $spacer/2 $spacer*2;
 }
 
+.property-new {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacer * 4;
+
+  h3 {
+    margin-bottom: $spacer * 2;
+  }
+}
+
+// .property-manually {
+//   width: 50%;
+// }
+
+// .property-web {
+//   width: 50%;
+// }
