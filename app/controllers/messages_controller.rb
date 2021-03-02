@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @property = @chatroom.property
     @project = @property.project_id
-    if @message.save
+    if @message.save!
       redirect_to project_property_path(@project, @property, anchor: "message-#{@message.id}")
     else
       render "chatrooms/show"

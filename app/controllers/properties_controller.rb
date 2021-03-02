@@ -5,34 +5,18 @@ class PropertiesController < ApplicationController
     @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+
+    # skipping pundit for now
+    skip_policy_scope
+
     @participants = Participant.where(project_id: @project.id)
 
-    # Stage one Vote count
-    @vote_array_1 = []
+    # Vote in the stage count
+    @vote_array = []
     @properties.each do |property| 
-      @vote_array_1 <<  Vote.where(property_id: property.id, stage: 1).count
+      @vote_array << Vote.where(property_id: property.id, stage: @project.stage).count
     end
-    @all_votes_stage_1 =  @vote_array_1.nil? ? 0 : @vote_array_1.sum 
-
-    # Stage two Vote count
-    @vote_array_2 = []
-    @properties.each do |property| 
-      @vote_array_2 <<  Vote.where(property_id: property.id, stage: 2).count
-    end
-    @all_votes_stage_2 = @vote_array_2.nil? ? 0 : @vote_array_1.sum 
-
-    # Stage one Vote average
-    @vote_array_average_1 = []
-    @average_1 = 0
-    @properties.each do |property| 
-      @vote_array_average_1 << Vote.find_by(property_id: property.id, stage: 1)
-      @vote_array_average_1.each do |vote|
-        @average_1 += vote.vote_average
-      end
-    end
-
-    # raise
-
+    @all_votes =  @vote_array.nil? ? 0 : @vote_array.sum 
 
     @markers = @properties.geocoded.map do |prop|
       {
@@ -87,7 +71,7 @@ class PropertiesController < ApplicationController
     @user = current_user
     @property.user = @user
 
-    if @property.save
+    if @property.save!
       p = Property.find(@property.id)
       @chatroom = Chatroom.create(property_id: p.id)
       redirect_to project_properties_path(@project)
@@ -99,9 +83,6 @@ class PropertiesController < ApplicationController
     authorize @property
 
     @project = Project.find(params[:project_id])
-    
-    # just needed for test purposes - can be deletet
-    @user = current_user
   end
 
   def update
@@ -109,9 +90,6 @@ class PropertiesController < ApplicationController
     authorize @property
 
     @project = Project.find(params[:project_id])
-
-    # just needed for test purposes - can be deletet
-    @user = current_user
 
     @property.update(property_params)
     redirect_to project_properties_path(@project)

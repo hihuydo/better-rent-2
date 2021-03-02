@@ -1,0 +1,16 @@
+<br>
+<br>
+        <p>Test 2</p>
+          <% if @project.stage == 1 %>
+            <p>casted votes: <i class="fas fa-vote-yea"></i> <%= @all_votes_stage_1 %> Casted </p>
+            <p> Expected Votes in this stage: <%= @properties.count * @participants.count %> </p>
+
+            <% if (@properties.count * @participants.count) == @all_votes_stage_1 %>
+              <p>All Votes casted</p>
+              <button>change stage</button>
+            <% end %>
+
+          <% elsif @project.stage == 2 %>
+            <p>casted votes: <i class="fas fa-vote-yea"></i> <%= @all_votes_stage_2 %> Casted </p>
+            <p> Expected Votes in this stage: <%= @properties.count * @participants.count %> </p>
+          <% end %>

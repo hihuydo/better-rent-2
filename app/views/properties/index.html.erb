@@ -16,16 +16,13 @@
         <%= link_to project_participants_path do  %>
           <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
         <% end %>
-        <p>casted votes: <i class="fas fa-vote-yea"></i> <%= @all_votes_stage_1 %> Casted </p>
-        <p> Expected Votes in this stage: <%= @properties.count * @participants.count %> </p>
-
-        <% if @properties.count * @participants.count == @all_votes_stage_1 %>
+        <p>Stage <%= @project.stage %></p>
+        <p>Votes: <i class="fas fa-vote-yea"></i> <%= @all_votes %> Casted / Expected: <%= @properties.count * @participants.count %> </p>
+        <% if (@properties.count * @participants.count) == @all_votes %>
           <p>All Votes casted</p>
           <button>change stage</button>
-        <% end %>
-
+        <% end %>    
       </div>
-
     </div>
   </div>
 
@@ -41,9 +38,13 @@
 
 
           <div class="property-info">
-            <i class="fas fa-vote-yea"></i> <%= property.votes.count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
-            <% if property.votes.count == @participants.count %>
+            <p>Votes for Stage <%= @project.stage %></p>
+            <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+            <% if property.votes.where(stage: @project.stage).count == @participants.count %>
               <p> All Vote casted </p>
+              <% property.votes.where(stage: @project.stage).each do |vote| %>
+                <%= vote.vote_average %>
+              <% end %>
             <% end %>
           </div>
 

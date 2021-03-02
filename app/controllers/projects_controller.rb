@@ -59,22 +59,6 @@ class ProjectsController < ApplicationController
     redirect_to projects_path
   end
 
-  # def change_stage
-  #   @project = Project.find(params[:id])
-  #   skip_policy_scope
-  # end
-
-  # def progress
-  #   @project = Project.find(params[:id])
-  #   authorize @project
-
-  #   if @project.stage = 1
-  #     @project.stage = 2
-  #   else 
-  #     @project.stage = 1
-  #   end
-  # end
-
   private
 
   def set_project
