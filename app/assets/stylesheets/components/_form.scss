@@ -8,22 +8,37 @@
     border: none;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom: 1px solid $link-color;
+    border-bottom: 0.5px solid $info-color;
     color: $link-color;
+
+    &::placeholder {
+      color: $link-color;
+      font-size: 0.85rem;
+    }
   }
 
   input[type="submit"] {
-    background-color: $link-color;
+    background-color: transparent;
     border: 1px solid $link-color;
     padding: $spacer $spacer * 6;
-    color: $text-color;
-    transition: all 0.3s ease-in-out;
+    color: $link-color;
+    transition: all 0.1s ease-in-out;
     margin-bottom: $spacer * 2;
+    margin-top: $spacer;
+    width: 100%;
 
     &:hover {
-      border-radius: $spacer * 20;
       background-color: $link-color;
       color: $text-color;
+      border-radius: 0;
     }
   }
+}
+
+input[type="file"] {
+  border-bottom: none;
+}
+
+.width-50 {
+  width: 50%;
 }
