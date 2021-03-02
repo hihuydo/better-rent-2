@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
   belongs_to :user
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many_attached :photos
   has_one :chatroom, dependent: :destroy
   has_many :messages, through: :chatroom, dependent: :destroy

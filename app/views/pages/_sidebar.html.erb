@@ -19,6 +19,12 @@
           </ul>
       </div>
 
+    <% if policy(Project).create? %>
+      <%= link_to new_project_path do %>
+        <i class="fas fa-plus-circle"></i>
+      <% end %>
+    <% end %>
+
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, :method=>'delete' do %>
         <i class="fas fa-sign-out-alt"></i>
