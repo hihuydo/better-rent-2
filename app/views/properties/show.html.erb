@@ -4,44 +4,44 @@
 <div class="main-container">
   <div class="sub-header-properties">
     <div>
-      On this pproperty page you can vote for one property. Remember: every vote counts!
+      On this page you can vote on one property. Remember: every vote counts!
     </div>
   </div>
 
-  <div class="col-sm-7">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="property-picture">
+        <% if @property.photos.attached? %>
+          <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
+        <% end %>
+      <div class="description">
+        <h3>Description of the property</h3>
+        <p><%= @property.description %></p>
+      </div>
+    </div>
+  </div>
 
-    <div class="property-picture">
-      <% if @property.photos.attached? %>
-        <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
+
+    <div class="col-sm-6">
+
+      <% if @vote_check.nil? %>
+        <%= render 'votes/star_rating' %>
+      <% else %>
+        <%= render 'votes/voted' %>
+        <%= link_to "Remove all", project_property_vote_path(@project, @property),
+                                  method: :delete,
+                                  data: { confirm: "Are you sure?" }  %>
       <% end %>
 
-      <%= link_to "Back to project page", project_properties_path(@project)  %>
-
-
-    <% if @vote_check.nil? %>
-      <%= render 'votes/star_rating' %>
-    <% else %>
-      <%= render 'votes/voted' %>
-      <%= link_to "Remove all", project_property_vote_path(@project, @property),
-                                method: :delete,
-                                data: { confirm: "Are you sure?" }  %>
-    <% end %>
-
-    <div class="description">
-      <h3>Description of the property</h3>
-      <p><%= @property.description %></p>
-    </div>
+      <div class="chat-box">
+        <h3>Message board</h3>
+        <!-- <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614181587/Chat_swksf3.png" alt="Chat Messages"> -->
+        <%= render 'chatrooms/show' %>
+      </div>
 
     </div>
   </div>
-
-  <div class="col-sm-5">
-    <div class="chat-box">
-      <h3>Message board</h3>
-      <!-- <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614181587/Chat_swksf3.png" alt="Chat Messages"> -->
-      <%= render 'chatrooms/show' %>
-    </div>
-  </div>
+</div>
 
 
 
