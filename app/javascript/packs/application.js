@@ -12,7 +12,13 @@ import { initMapbox} from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
 
 document.addEventListener('turbolinks:load', () => {
-  initToogleSidebar();
+  // initToogleSidebar();
   initStarRating();
   initMapbox();
 });
+
+// $(document).ready(function(){
+//   $('.carousel').carousel({
+//     interval: 2000
+//   })
+// });

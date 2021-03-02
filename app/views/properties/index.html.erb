@@ -18,8 +18,8 @@
       <div class="mosaik-layout">
         <% @properties.each do |property|  %>
           <div class="property-card">
-            <% property.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
+            <%= link_to project_property_path(params[:project_id],property) do %>
+              <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
             <% end %>
             <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
             <div class="property-info"><%= property.lettable_area.to_f %> square meters | <%= property.rent_per_sqm %> €</div>
