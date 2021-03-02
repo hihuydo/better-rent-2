@@ -13,7 +13,10 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     new mapboxgl.Marker({color: "#ff3f12"})
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(new mapboxgl.Popup().setHTML("<p><%= @property.description %></p>")) /*need ot figure out how to access the postgres db with javascript*/
       .addTo(map);
+      console.log(marker);
+      console.log(marker.lat);
   });
 };
 
