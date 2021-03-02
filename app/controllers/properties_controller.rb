@@ -31,7 +31,7 @@ class PropertiesController < ApplicationController
       end
     end
 
-    raise
+    # raise
 
 
 
