@@ -20,7 +20,7 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     authorize @property
-    
+
     @project = Project.find(params[:project_id])
     @vote = Vote.new
 
@@ -74,7 +74,7 @@ class PropertiesController < ApplicationController
     authorize @property
 
     @project = Project.find(params[:project_id])
-    
+
     # just needed for test purposes - can be deletet
     @user = current_user
   end
@@ -97,7 +97,7 @@ class PropertiesController < ApplicationController
     @property = Property.find(params[:id])
     @property.destroy
     authorize @property
-    
+
     redirect_to project_properties_path(@project)
   end
 
