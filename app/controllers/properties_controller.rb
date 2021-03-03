@@ -60,9 +60,10 @@ class PropertiesController < ApplicationController
     @property.project_id = @project.id
     @property.user = current_user
 
-    if @property.save!
-      p = Property.find(@property.id)
-      @chatroom = Chatroom.create(property_id: p.id)
+
+    if @property.save
+      # p = Property.find(@property.id)
+      # @chatroom = Chatroom.create(property_id: p.id)
       redirect_to project_properties_path(@project)
     end
   end

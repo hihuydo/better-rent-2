@@ -17,16 +17,27 @@
 
   button {
     border: none;
-    border-radius: $spacer;
-    background-color: $link-color;
-    box-shadow: $card-box-shadow;
+    width: 70%;
+    background-color: transparent;
+    border: 1px solid $link-color;
+    color: $link-color;
+    font-size: 1rem;
     padding: $spacer $spacer * 3;
-    transition: all 0.3s;
-    margin-top: 32px;
+    transition: all 0.1s;
 
     a {
-      color: $text-color;
+      color: $link-color;
       text-decoration: none;
+    }
+
+    &:hover {
+      background-color: $link-color;
+      color: $text-color;
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+      }
     }
   }
 }
@@ -62,13 +73,4 @@
       border-bottom: 1px solid $link-color;
     }
   }
-}
-
-.card-home-button {
-    background-color: $link-color;
-    border: 1px solid $link-color;
-    border-radius: $spacer;
-    padding: $spacer $spacer * 6;
-    color: $text-color;
-    transition: all 0.3s ease-in-out;
 }

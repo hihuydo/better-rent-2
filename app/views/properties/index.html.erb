@@ -29,6 +29,7 @@
 
   <div class="properties">
     <div class="property-cards">
+<<<<<<< HEAD
       <% @properties.each do |property|  %>
         <div class="property-card">
           <% property.photos.each do |photo| %>
@@ -54,19 +55,39 @@
                 <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
               <% end %>
             </div>
+=======
+      <div class="mosaik-layout">
+        <% @properties.each do |property|  %>
+          <div class="property-card">
+>>>>>>> master
             <%= link_to project_property_path(params[:project_id],property) do %>
-              <i class="far fa-eye"></i>
+              <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
             <% end %>
+            <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+            <div class="property-info"><%= property.lettable_area.to_f %> square meters | <%= property.rent_per_sqm %> €</div>
+            <div class="property-CTA">
+              <div>
+                <% if policy(property).edit? %>
+                  <%= link_to "Edit", edit_project_property_path(params[:project_id],property), class: 'CTA' %>
+                <% end %>
+                <% if policy(property).destroy? %>
+                  <%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" }, class: 'CTA' %>
+                <% end %>
+              </div>
+              <%= link_to project_property_path(params[:project_id],property) do %>
+                <i class="far fa-eye"></i>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
-  <div id="map"
-    style="position: sticky; right: 0px; width: 35%; height: 100vh;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+    <div id="map"
+      style="position: sticky; right: 0px; width: 35%; height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 </div>
 
 <% end %>
