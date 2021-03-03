@@ -5,18 +5,15 @@
   <div class="sub-header-properties">
     <div>
       On this page you can vote on one property. Remember: every vote counts!
+      
     </div>
+      <%= link_to "Back to your project", project_properties_path(@project) %>
   </div>
 
   <div class="row">
     <div class="col-sm-6">
       <div class="property-picture">
-<<<<<<< HEAD
-        <% if @property.photos.attached? %>
-          <%= cl_image_tag @property.photos.first.key, crop: :fill, class: "card-item" %>
-        <% end %>
-        <%= link_to "Back to project page", project_properties_path(@project)  %>
-=======
+
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
  <!--          <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -41,7 +38,6 @@
         </div>
       </div>
 
->>>>>>> master
       <div class="description">
         <h3>Description of the property</h3>
         <p><%= @property.description %></p>

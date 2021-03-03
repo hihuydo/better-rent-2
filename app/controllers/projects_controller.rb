@@ -38,8 +38,6 @@ class ProjectsController < ApplicationController
     # only person who create can edit 
     @project = Project.find(params[:id])
     authorize @project
-
-    @user = current_user
   end
 
   def update
@@ -57,6 +55,24 @@ class ProjectsController < ApplicationController
     authorize @project
     @project.destroy
     redirect_to projects_path
+  end
+
+  def change_stage
+    @project = Project.find(params[:id])
+    skip_policy_scope
+  end
+
+  def stage
+    @project = Project.find(params[:id])
+    authorize @project
+    # raise
+    if @project.stage == 1
+      @project.update(stage: 2)
+      redirect_to project_properties_path(@project)
+    elsif @project.stage == 2
+      @project.update(stage: 2)
+      redirect_to project_properties_path(@project)
+    end
   end
 
   private

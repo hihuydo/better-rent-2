@@ -22,6 +22,7 @@ class Property < ApplicationRecord
     return votes == participants ? true : false
   end
 
+
   def made_stage_2?
     project = Project.where(project_id: project_id)
     properties = Property.count
