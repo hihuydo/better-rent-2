@@ -10,8 +10,6 @@ class VotesController < ApplicationController
     authorize @vote
   end 
 
-
-
   def new
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
