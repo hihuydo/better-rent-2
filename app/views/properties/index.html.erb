@@ -17,17 +17,18 @@
       
         <% if (@properties.count * @participants.count) == @all_votes %>
           <p>All Votes casted</p>
-          
           <%= render 'projects/change_stage' %>
-
         <% end %>    
       </div>
     </div>
   </div>
 
-  <% if @project.stage == 2 %>
+  <% if @project.stage_2_completet?  == true && (@all_votes != 0) %>
+    <%= render 'properties/winner' %>
+  <% elsif @project.stage == 2 %>
+    <p>test Stage 2</p>
     <%= render 'properties/index_stage_2' %>
-  <% else %>
+  <% else @project.stage == 1 %>
 
   <div class="properties">
     <div class="property-cards">
@@ -45,7 +46,7 @@
               <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
                 <p> All Vote casted </p>
-                <p> Average by team <%= property.vote_sum_stage_1.round(1) %> <i class="fas fa-star"></i> </p>
+                <p> Average by team <%= property.vote_average_stage_1.round(1) %> <i class="fas fa-star"></i> </p>
               <% end %>           
             </div>
             <div class="property-CTA">

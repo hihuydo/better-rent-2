@@ -104,6 +104,6 @@ class PropertiesController < ApplicationController
     properties.each do |property| 
       vote_array << Vote.where(property_id: property.id, stage: project.stage).count
     end
-    return vote_array.nil? ? 0 : vote_array.sum 
+    return vote_array.sum
   end
 end

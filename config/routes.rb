@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :participants, only: [ :index, :show, :new, :create, :destroy ]
   end
 
+  # custom route for stage 2
   get '/projects/:id/change_stage', to: 'projects#stage', as: :change_stage
   patch  "projects/:id",      to: "projects#stage"
+
 end

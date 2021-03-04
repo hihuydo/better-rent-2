@@ -1,15 +1,14 @@
 <% if (@participants.count * @project.properties_in_stage_2 ) == @all_votes %>
-  <p>All Votes count</p>
+  <h1>Voting completet - Property selected</h1> 
 <% else %>
-  <p>Cated Votes <%= @all_votes %> | Expected Votes: <%= (@participants.count * @project.properties_in_stage_2 ) %> </p>
+  <p>Casted Votes <%= (@participants.count * @project.properties_in_stage_2 ) %>| Expected Votes: <%= (@participants.count * @project.properties_in_stage_2 ) %> </p>
 <% end %>
-
 
   <div class="properties">
     <div class="property-cards">
       <div class="mosaik-layout">
         <% @properties.each do |property|  %>
-          <% if property.made_stage_2? == false %>
+          <% if property.winner? == false  %>
             <div class="property-card" style="background-color: red">
               <% property.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
@@ -17,7 +16,7 @@
               <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
               <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
                 <div class="property-info">
-                  <p>Property was eliminated in Stage 1</p>
+                  <p>This property was not selected</p>
                 </div>
                 <div>
               </div>
@@ -36,7 +35,7 @@
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
                 <p> All Vote casted </p>
                 <p> Average by team <%= property.vote_average_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
-                <p> <%= property.winner?  %> </p>
+                <p> Your new office</p>
               <% end %>           
             </div>
 

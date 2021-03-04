@@ -49,7 +49,9 @@
 		<% else %>
 			<% @votes_collaborators.each do |vote| %>
 				<div class="vote">
-					<img class="avatar-vote" src="https://kitt.lewagon.com/placeholder/users/ssaunier" /> 
+						<% vote.user.photos.each do |photo| %>
+							<%= cl_image_tag photo.key, crop: :fill, class: "avatar-vote" %>
+						<% end %>
 					<p><%= vote.vote_average %> <i class="fas fa-star"></i></p>
 				</div> 
 			<% end %>
