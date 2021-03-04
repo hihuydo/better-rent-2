@@ -21,7 +21,7 @@ class ProjectPolicy < ApplicationPolicy
     return true
   end
 
-  def progress?
+  def stage?
     return true
   end 
 

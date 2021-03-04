@@ -1,38 +1,24 @@
-<%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: "Project: #{@project.name}" %>
-
-<div class="main-container">
-  <div class="sub-header-properties">
-    <div>
-      <div class="stage-project button">
-        Stage <%= @project.stage %> of 2
-      </div>
-        <% if user_signed_in? %>
-          <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
-        <% end %>
-        <%= link_to project_participants_path do  %>
-          <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
-        <% end %>
-      <div>
-      
-        <% if (@properties.count * @participants.count) == @all_votes %>
-          <p>All Votes casted</p>
-          
-          <%= render 'projects/change_stage' %>
-
-        <% end %>    
-      </div>
-    </div>
-  </div>
-
-  <% if @project.stage == 2 %>
-    <%= render 'properties/index_stage_2' %>
-  <% else %>
-
   <div class="properties">
     <div class="property-cards">
       <div class="mosaik-layout">
         <% @properties.each do |property|  %>
+          <% if property.made_stage_2? == false %>
+            <div class="property-card" style="background-color: red">
+              <% property.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
+              <% end %>
+
+                <%= property.all_votes_casted_2? %>
+                
+              <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+              <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+                <div class="property-info">
+                  <p>Property was eliminated in Stage 1</p>
+                </div>
+                <div>
+              </div>
+            </div> 
+          <% else %>
           <div class="property-card">
             <% property.photos.each do |photo| %>
               <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
@@ -45,9 +31,10 @@
               <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
                 <p> All Vote casted </p>
-                <p> Average by team <%= property.vote_sum_stage_1.round(1) %> <i class="fas fa-star"></i> </p>
+                <p> Average by team <%= property.vote_sum_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
               <% end %>           
             </div>
+
             <div class="property-CTA">
               <div>
                 <% if policy(property).edit? %>
@@ -62,14 +49,15 @@
               <% end %>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div>
+
     </div>
 
-    <div id="map"
-      style="position: sticky; right: 0px; width: 35%; height: 100vh;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+  <div id="map"
+    style="position: sticky; right: 0px; width: 35%; height: 100vh;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-<% end %>
+</div>

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :participants, only: [ :index, :show, :new, :create, :destroy ]
   end
 
-  get '/projects/:id/change_stage', to: 'projects#progress', as: :change_stage_projects
+  get '/projects/:id/change_stage', to: 'projects#stage', as: :change_stage
   patch  "projects/:id",      to: "projects#stage"
 end

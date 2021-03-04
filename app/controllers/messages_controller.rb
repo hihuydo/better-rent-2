@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @property = @chatroom.property
     @project = @property.project_id
-    if @message.save
 
+    if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
         render_to_string(partial: "message", locals: { message: @message })

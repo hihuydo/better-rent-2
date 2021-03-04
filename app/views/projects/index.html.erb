@@ -54,6 +54,7 @@
                       <% end %>
                     <% end %>
                   <% end %>
+                  
                 </div>
             </div>
           <% end %>
@@ -91,7 +92,7 @@
                       <i class="fas fa-user-plus"></i>
                     <% end %>
                   <% end %>
-
+                  
                   <% project.participants.each do |participant| %>
                     <% if current_user.id == participant.user_id %>
                       <%= link_to project_properties_path(project) do %>
