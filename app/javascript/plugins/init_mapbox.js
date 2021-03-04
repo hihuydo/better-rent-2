@@ -11,12 +11,17 @@ const buildMap = (mapElement) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    new mapboxgl.Marker({color: "#ff3f12"})
-      .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(new mapboxgl.Popup().setHTML("<p><%= @property.description %></p>")) /*need ot figure out how to access the postgres db with javascript*/
-      .addTo(map);
-      console.log(marker);
-      console.log(marker.lat);
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+
+  new mapboxgl.Marker({color: "#ff3f12"})
+    .setLngLat([ marker.lng, marker.lat ])
+    .setPopup(popup)
+    .addTo(map);
   });
 };
 

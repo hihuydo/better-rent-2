@@ -12,7 +12,9 @@ class PropertiesController < ApplicationController
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
-        lng: prop.longitude
+        lng: prop.longitude,
+        infoWindow: render_to_string(partial: "infoWindow", locals: { prop: prop }),
+        image_url: "#{prop.photos.first.key}"
       }
     end
   end
