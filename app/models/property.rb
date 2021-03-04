@@ -22,7 +22,6 @@ class Property < ApplicationRecord
     return votes == participants ? true : false
   end
 
- 
   def made_stage_2?
     # project = Project.where(project_id: project_id)
     properties = Property.count
@@ -73,8 +72,6 @@ private
     end
     return vote_average 
   end
-
-
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_zipcode?
