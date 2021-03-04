@@ -1,12 +1,16 @@
 <%= render 'pages/sidebar' %>
 <%= render 'pages/header', title: "Add a property" %>
-  <br>
-  <br>
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="property_card">
-      <h1>Add a property</h1>
+
+<div class="main-container">
+  <div class="project-intro">
+    <div>
+      <p>Add a new property to your existing project. You can either enter the information manually or just simply get them from the web</p>
+    </div>
+  </div>
+
+  <div class="property-new">
+    <div class="property-manually">
+      <h3>Add manually</h3>
         <div class="form-property">
           <%= simple_form_for [ @project, @property ] do |f| %>
             <%= f.input :street, placeholder: 'Street', label:false %>
@@ -15,28 +19,28 @@
             <%= f.input :city, placeholder: 'City', label:false %>
             <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
             <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
-            <%= f.input :availability, placeholder: 'Availabe from', label:false %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
-            <%= f.button :submit, "submit", class: "btn btn-primary" %>
+            <div class="upload-btn-wrapper">
+              <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false, class: 'custom-file-upload' %>
+            </div>
+            <%= f.button :submit, "Add a new property" %>
           <% end %>
         </div>
-      </div>
     </div>
-  <div class="col-sm">
-    <div class="container">
-      <div class="property_card">
-        <h1>Add a property from the web</h1>
-        <div class="form-property">
-          <%= simple_form_for [ @project, @property ] do |f| %>
-            <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
-          <%= f.button :submit, "submit", class: "btn btn-primary" %>
-          <% end %>
-        </div>
+
+    <div class="property-web">
+      <h3>Get from the web</h3>
+      <div class="form-property">
+        <%= simple_form_for [ @project, @property ] do |f| %>
+          <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
+        <%= f.button :submit, "Add a new property" %>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
-  <div class="d-flex flex-row-reverse">
-    <p><%= link_to 'back to your properties',  project_properties_path %></p>
-  </div>
+
+    <div class="mt-5"><%= link_to project_properties_path do %></p>
+      <i class="fas fa-arrow-left"></i> Back to properties
+      <% end %>
+    </div>
+
 </div>

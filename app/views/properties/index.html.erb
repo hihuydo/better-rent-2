@@ -1,5 +1,5 @@
 <%= render 'pages/sidebar' %>
-<%= render 'pages/header', title: @project.name %>
+<%= render 'pages/header', title: "Project: #{@project.name}" %>
 
 <div class="main-container">
   <div class="sub-header-properties">
@@ -7,37 +7,70 @@
       <div class="stage-project button">
         Stage <%= @project.stage %> of 2
       </div>
-      <% if user_signed_in? %>
-        <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
-      <% end %>
+        <% if user_signed_in? %>
+          <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
+        <% end %>
+        <%= link_to project_participants_path do  %>
+          <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+        <% end %>
+      <div>
+      
+        <% if (@properties.count * @participants.count) == @all_votes %>
+          <p>All Votes casted</p>
+          <%= render 'projects/change_stage' %>
+        <% end %>    
+      </div>
     </div>
   </div>
+
+  <% if @project.stage_2_completet?  == true && (@all_votes != 0) %>
+    <%= render 'properties/winner' %>
+  <% elsif @project.stage == 2 %>
+    <p>test Stage 2</p>
+    <%= render 'properties/index_stage_2' %>
+  <% else @project.stage == 1 %>
 
   <div class="properties">
     <div class="property-cards">
-      <% @properties.each do |property|  %>
-        <div class="property-card">
-          <% property.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
-          <% end %>
-          <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
-          <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
-          <div class="property-CTA">
-            <div>
-              <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>
-              <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
-            </div>
-            <%= link_to project_property_path(params[:project_id],property) do %>
-              <i class="far fa-eye"></i>
+      <div class="mosaik-layout">
+        <% @properties.each do |property|  %>
+          <div class="property-card">
+            <% property.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
             <% end %>
+            <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+            <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+
+            <div class="property-info">
+              <p>Votes for Stage <%= @project.stage %></p>
+              <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+              <% if property.votes.where(stage: @project.stage).count == @participants.count %>
+                <p> All Vote casted </p>
+                <p> Average by team <%= property.vote_average_stage_1.round(1) %> <i class="fas fa-star"></i> </p>
+              <% end %>           
+            </div>
+            <div class="property-CTA">
+              <div>
+                <% if policy(property).edit? %>
+                  <button><%= link_to "Edit", edit_project_property_path(params[:project_id],property) %></button>
+                <% end %>
+                <% if policy(property).destroy? %>
+                  <button><%= link_to "Delete", project_property_path(params[:project_id],property), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                <% end %>
+              </div>
+              <%= link_to project_property_path(params[:project_id],property) do %>
+                <i class="far fa-eye"></i>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 
-  <div id="map"
-    style="position: absolute; right: 0px; width: 25%; height: 77%;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div id="map"
+      style="position: sticky; right: 0px; width: 35%; height: 100vh;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
-</div>
+<% end %>

@@ -69,3 +69,6 @@ gem 'cloudinary', '~> 1.16.0'
 
 # geocoding
 gem 'geocoder'
+
+# pundit
+gem 'pundit'

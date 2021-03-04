@@ -1,6 +1,8 @@
 <div class="wrapper">
     <div class="sidebar">
-      <img class="avatar" src="https://res.cloudinary.com/lewagon-training/image/upload/v1614273903/avatar_megan_er2nhn.png" />
+      <% current_user.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, crop: :fill, class: "avatar" %>
+      <% end %>
       <div class="icon-bar">
           <ul id="nav">
             <%= link_to root_path do  %>
@@ -8,18 +10,20 @@
             <% end %>
 
             <%= link_to projects_path do  %>
-              <li id="project"><i class="far fa-folder"></i></li>
+              <li class="<%= active_class(projects_path) %>"><i class="far fa-folder"></i></li>
             <% end %>
 
-            <%= link_to projects_path do  %>
-              <li id="property"><i class="fas fa-building"></i></li>
+            <%= link_to new_project_path do  %>
+              <li class="<%= active_class(new_project_path) %>"><i class="fas fa-building"></i></li>
             <% end %>
           </ul>
       </div>
 
+<!--     <% if policy(Project).create? %>
       <%= link_to new_project_path do %>
         <i class="fas fa-plus-circle"></i>
       <% end %>
+    <% end %> -->
 
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, :method=>'delete' do %>

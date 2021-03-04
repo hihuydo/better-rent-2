@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="property_card">
+        <div class="form-property">
+          <%= simple_form_for [ @project, @participant ] do |f| %>
+            <%= f.collection_select :user_id, @users, :id, :email %>
+            <%= f.button :submit, "add", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>

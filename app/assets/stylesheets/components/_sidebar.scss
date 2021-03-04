@@ -26,14 +26,6 @@ li {
   margin-top: $spacer;
 }
 
-.active {
-  background-color: $navi-tag-active;
-  color: white;
-  border-radius: 0px 5px 5px 0px;
-  width: 110%;
-  transition: 0.3s ease;
-}
-
 ul li {
   padding-top: $spacer * 2;
   padding-bottom: $spacer * 2;
@@ -44,11 +36,27 @@ ul li {
   width: 110%;
 }
 
-.wrapper .sidebar ul li:hover {
+ul li:hover {
   background-color: $navi-tag-active;
   color: $navi-icon-active;
   border-radius: 0px 5px 5px 0px;
   width: 110%;
+}
+
+// #nav > a:nth-child(2):visited {
+//   background-color: #000;
+//   color: white;
+//   border-radius: 0px 5px 5px 0px;
+//   width: 110%;
+//   transition: 0.3s ease;
+// }
+
+ul li.active {
+  background-color: $navi-tag-active;
+  color: $navi-icon-active;
+  border-radius: 0px 5px 5px 0px;
+  width: 110%;
+  // transition: 0.3s ease;
 }
 
 .fa-plus-circle {

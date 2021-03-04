@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :properties
   has_many :votes
   has_many :participants, dependent: :destroy
+  has_many_attached :photos
 end

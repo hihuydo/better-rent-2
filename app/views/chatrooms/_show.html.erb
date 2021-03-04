@@ -1,0 +1,11 @@
+
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+
+<% @chatroom.messages.each do |message| %>
+<%= render 'messages/message', message: message %>
+  <% end %>
+</div>
+
+  <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?" %>
+  <% end %>

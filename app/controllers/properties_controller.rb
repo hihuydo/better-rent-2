@@ -5,9 +5,16 @@ class PropertiesController < ApplicationController
   require 'nokogiri'
 
   def index
-    @user = current_user
     @project = Project.find(params[:project_id])
     @properties = @project.properties
+
+    # skipping pundit for now
+    skip_policy_scope
+
+    @participants = Participant.where(project_id: @project.id)
+
+    @all_votes = vote_count_stage(@properties, @project)
+
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
@@ -18,10 +25,14 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    authorize @property
+
     @project = Project.find(params[:project_id])
     @vote = Vote.new
 
-    @user = current_user
+    @chatroom = Chatroom.find(@property.chatroom.id)
+    @message = Message.new
+
     @vote.user = current_user
     # @vote_check = Vote.where(user_id: current_user, property_id: @property.id)
     @vote_check = Vote.find_by(user_id: current_user, property_id: @property.id, stage: @project.stage )
@@ -30,12 +41,15 @@ class PropertiesController < ApplicationController
     @votes_all_team = Vote.where(property_id: @property.id, stage: @project.stage)
     # Finde all votes of the collaborators in the team without the current user votes
     @votes_collaborators = @votes_all_team.where.not(user_id: current_user)
-    # raise
   end
 
   def new
     @project = Project.find(params[:project_id])
     @property = Property.new
+
+    # function checked and needed
+    # every member can create a property in the project
+    authorize @property
   end
 
   def create
@@ -56,12 +70,14 @@ class PropertiesController < ApplicationController
       manipulated_params[:number] = number
       @property = Property.new(manipulated_params)
       @project = Project.find(params[:project_id])
+      authorize @property
       @user = current_user
       @property.project_id = @project.id
       @property.user = @user
     else
       @property = Property.new(property_params)
       @project = Project.find(params[:project_id])
+      authorize @property
       @user = current_user
       @property.project_id = @project.id
       @property.user = @user
@@ -71,31 +87,40 @@ class PropertiesController < ApplicationController
   end
 
   def edit
-    @property = Property.find(params[:id])
     @project = Project.find(params[:project_id])
+    @property = Property.find(params[:id])
+    authorize @property
   end
 
   def update
-    @property = Property.find(params[:id])
     @project = Project.find(params[:project_id])
+    @property = Property.find(params[:id])
+    authorize @property
+    
     @property.update(property_params)
     redirect_to project_properties_path(@project)
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
-    project = Project.find(params[:project_id])
     @property.destroy
-    redirect_to project_properties_path(project)
-  end
-
-  def change_stage
-    @project = Project.find(params[:id])
+    authorize @property
+    redirect_to project_properties_path(@project)
   end
 
   private
 
   def property_params
     params.require(:property).permit!
+  end
+
+      
+  def vote_count_stage(properties, project)
+    vote_array = []
+    properties.each do |property| 
+      vote_array << Vote.where(property_id: property.id, stage: project.stage).count
+    end
+    return vote_array.sum
   end
 end
