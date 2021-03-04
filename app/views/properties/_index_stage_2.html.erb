@@ -21,23 +21,23 @@
                 </div>
                 <div>
               </div>
-            </div> 
+            </div>
           <% else %>
           <div class="property-card">
-            <% property.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, crop: :fill, class: "card-item" %>
+            <%= link_to project_property_path(params[:project_id],property) do %>
+              <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
             <% end %>
             <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
             <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
 
             <div class="property-info">
               <p>Votes for Stage <%= @project.stage %></p>
-              <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members 
+              <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
                 <p> All Vote casted </p>
                 <p> Average by team <%= property.vote_average_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
                 <p> <%= property.winner?  %> </p>
-              <% end %>           
+              <% end %>
             </div>
 
             <div class="property-CTA">
