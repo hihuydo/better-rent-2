@@ -8,13 +8,11 @@ class PropertiesController < ApplicationController
 
     # skiping pundit because you can only see the button if you are a participant
     skip_policy_scope
-
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
         lng: prop.longitude,
         infoWindow: render_to_string(partial: "infoWindow", locals: { prop: prop }),
-        image_url: "#{prop.photos.first.key}"
       }
     end
   end
