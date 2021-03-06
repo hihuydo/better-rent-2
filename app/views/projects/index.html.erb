@@ -24,14 +24,14 @@
                 <div class="project-CTA">
                   <div>
                     <% if policy(project).edit? %>
-                      <button type="button-project"><%= link_to "Edit", edit_project_path(project) %></button>
+                      <%= link_to "Edit", edit_project_path(project), class: 'CTA' %>
                     <% end %>
 
                     <% if policy(project).destroy? %>
-                      <button type="button-project"><%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" } %></button>
+                      <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: "Are you sure?" }, class: 'CTA' %>
                     <% end %>
                   </div>
-                  
+
                   <% project.participants.each do |participant| %>
                     <% if current_user.id == participant.user_id %>
                       <%= link_to project_participants_path(project) do %>
@@ -54,6 +54,7 @@
                       <% end %>
                     <% end %>
                   <% end %>
+                  
                 </div>
             </div>
           <% end %>
@@ -91,7 +92,7 @@
                       <i class="fas fa-user-plus"></i>
                     <% end %>
                   <% end %>
-
+                  
                   <% project.participants.each do |participant| %>
                     <% if current_user.id == participant.user_id %>
                       <%= link_to project_properties_path(project) do %>

@@ -10,8 +10,6 @@ class VotesController < ApplicationController
     authorize @vote
   end 
 
-
-
   def new
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])
@@ -40,12 +38,11 @@ class VotesController < ApplicationController
 
   def destroy
     @vote = Vote.all
-    # skiping pundit because you can only see the button if you are a participant
-    # skip_policy_scope
-
     @vote.destroy_all
+    # skiping pundit because you can only see the button if you are a participant
+    skip_policy_scope
 
-    authorize @vote
+    # authorize @vote
 
     @property = Property.find(params[:property_id])
     @project = Project.find(params[:project_id])

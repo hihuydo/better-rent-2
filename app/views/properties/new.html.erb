@@ -8,6 +8,8 @@
     </div>
   </div>
 
+  <div class="property-new">
+    <div class="property-manually">
       <h3>Add manually</h3>
         <div class="form-property">
           <%= simple_form_for [ @project, @property ] do |f| %>
@@ -17,22 +19,28 @@
             <%= f.input :city, placeholder: 'City', label:false %>
             <%= f.input :rent_per_sqm, placeholder: 'Rent per squaremeter', label:false %>
             <%= f.input :lettable_area, placeholder: 'Lettable area', label:false %>
-            <%= f.input :availability, placeholder: 'Availabe from', label:false %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false %>
-            <%= f.button :submit, "submit", class: "btn btn-primary" %>
+            <div class="upload-btn-wrapper">
+              <%= f.input :photos, as: :file, input_html: { multiple: true }, label: false, class: 'custom-file-upload' %>
+            </div>
+            <%= f.button :submit, "Add a new property" %>
           <% end %>
         </div>
+    </div>
 
-        <h3>Get from the web</h3>
-        <div class="form-property">
-          <%= simple_form_for [ @project, @property ] do |f| %>
-            <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
-          <%= f.button :submit, "submit", class: "btn btn-primary" %>
-          <% end %>
-        </div>
-
-</div>
-  <div class="d-flex flex-row-reverse">
-    <p><%= link_to 'back to your properties',  project_properties_path %></p>
+    <div class="property-web">
+      <h3>Get from the web</h3>
+      <div class="form-property">
+        <%= simple_form_for [ @project, @property ] do |f| %>
+          <%= f.input :offer_url, placeholder: 'Enter URL from Immoscout, Immowelt, ...', label:false %>
+        <%= f.button :submit, "Add a new property" %>
+        <% end %>
+      </div>
+    </div>
   </div>
+
+    <div class="mt-5"><%= link_to project_properties_path do %></p>
+      <i class="fas fa-arrow-left"></i> Back to properties
+      <% end %>
+    </div>
+
 </div>

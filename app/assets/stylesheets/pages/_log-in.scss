@@ -66,7 +66,7 @@ body {
 
 .floating-img {
   height: auto;
-  animation: up-down 5s infinite ease-in-out alternate;
+  animation: up-down 3s infinite ease-in-out alternate;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,16 +79,16 @@ body {
 
 @keyframes up-down{
   from{
-    transform: translatey(0px);
+    transform: translatey(5px);
   }
   to{
-    transform: translatey(-10px);
+    transform: translatey(-15px);
   }
 }
 
 .floating-img-reverse {
   height: auto;
-  animation: down-up 5s infinite ease-in-out alternate;
+  animation: down-up 3s infinite ease-in-out alternate;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,9 +100,9 @@ body {
 
 @keyframes down-up{
   from{
-    transform: translatey(-10px);
+    transform: translatey(-15px);
   }
   to{
-    transform: translatey(0px);
+    transform: translatey(5px);
   }
 }

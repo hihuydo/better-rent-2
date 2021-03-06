@@ -14,6 +14,6 @@ class VotePolicy < ApplicationPolicy
   end
 
   def destroy_all?
-    user.admin?
+    user.admin? 
   end
 end

@@ -8,7 +8,7 @@
   <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
 <!--   <h2>create a new project</h2> -->
     <%= simple_form_for @project do |f| %>
-      <%= f.input :name %>
+      <%= f.input :name lable: 'Project Name'%>
       <%= f.input :description %>
       <%= f.button :submit, "save", class: "btn btn-primary" %>
     <% end %>
