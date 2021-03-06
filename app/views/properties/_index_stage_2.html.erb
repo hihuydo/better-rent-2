@@ -10,7 +10,7 @@
       <div class="mosaik-layout">
         <% @properties.each do |property|  %>
           <% if property.made_stage_2? == false %>
-            <div class="property-card gray-out" style="background-color: red">
+            <div class="property-card gray-out">
             <%= link_to project_property_path(params[:project_id],property) do %>
               <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
             <% end %>
