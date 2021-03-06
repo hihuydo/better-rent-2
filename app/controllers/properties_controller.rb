@@ -96,7 +96,7 @@ class PropertiesController < ApplicationController
     @project = Project.find(params[:project_id])
     @property = Property.find(params[:id])
     authorize @property
-    
+
     @property.update(property_params)
     redirect_to project_properties_path(@project)
   end
@@ -115,10 +115,10 @@ class PropertiesController < ApplicationController
     params.require(:property).permit!
   end
 
-      
+
   def vote_count_stage(properties, project)
     vote_array = []
-    properties.each do |property| 
+    properties.each do |property|
       vote_array << Vote.where(property_id: property.id, stage: project.stage).count
     end
     return vote_array.sum
