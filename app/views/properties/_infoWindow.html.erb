@@ -1,0 +1,7 @@
+<div style="color: #ff3f12; background-color: #343a40;">
+  <p><%= prop.street %></p>
+  <p><%= prop.number %></p>
+  <% if prop.photos.first %>
+    <%= cl_image_tag prop.photos.first.key, crop: :fill %>
+  <% end %>
+</div>
