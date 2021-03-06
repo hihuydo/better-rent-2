@@ -4,56 +4,56 @@
 		<div class="rating-row">
 			<p>Price</p>
 			<p><%= @property.rent_per_sqm %> EUR / m²</p>
-			<div>	
+			<div>
 				<% @vote_check.vote_price.times do %>
 					<i class="fas fa-star"></i>
-				<% end %>			
+				<% end %>
 			</div>
 		</div>
 
 		<div class="rating-row">
 			<p>Location</p>
       <p><%= @property.street %> <%= @property.number %></p>
-			<div>	
+			<div>
 				<% @vote_check.vote_location.times do %>
 					<i class="fas fa-star"></i>
-				<% end %>			
+				<% end %>
 			</div>
 		</div>
 
 		<div class="rating-row">
 			<p>Size</p>
 			<p><%= @property.lettable_area %> EUR / m²</p>
-			<div>	
+			<div>
 				<% @vote_check.vote_size.times do %>
 					<i class="fas fa-star"></i>
-				<% end %>			
+				<% end %>
 			</div>
 		</div>
-				
+
 		<div class="rating-row">
 			<p>Your average rating</p>
 			<p></p>
-			<div>	
+			<div>
 					<p><%= @vote_check.vote_average %> <i class="fas fa-star"></i></p>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div class="col-sm-4">
+<div>
 	<h3>Votes by your team</h3>
 	<div class="team-display">
 		<% if @votes_collaborators.empty? %>
 			<p>Your the first voter</p>
 		<% else %>
 			<% @votes_collaborators.each do |vote| %>
-				<div class="vote">
+				<div class="avatar-vote">
 						<% vote.user.photos.each do |photo| %>
-							<%= cl_image_tag photo.key, crop: :fill, class: "avatar-vote" %>
+							<%= cl_image_tag photo.key, crop: :fill %>
 						<% end %>
 					<p><%= vote.vote_average %> <i class="fas fa-star"></i></p>
-				</div> 
+				</div>
 			<% end %>
 		<% end %>
 	</div>
