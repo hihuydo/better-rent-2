@@ -2,18 +2,29 @@
 <%= render 'pages/header', title: "Your team" %>
 
 <div class="main-container">
-  <h1><%= @project.name %></h1>
-  <h3> Project Owner <%= @project.user_id %></h1>
+  <div class="info-container">
+    <div>
+      <h1>Project: <%= @project.name %></h1>
+      <h3> Project Owner: <%= @project.user.user_name %></h1>
 
-  <% if current_user.id == @project.user_id %>
-    <%= render 'participants/new' %> 
-  <% end %>
+      <% if current_user.id == @project.user_id %>
+        <%= render 'participants/new' %> 
+      <% end %>
+    </div>
 
 
-  <% @participants.each do |participant| %>
-    <img class="avatar" src="https://res.cloudinary.com/lewagon-training/image/upload/v1614273903/avatar_megan_er2nhn.png" />
-    <h1>User id: <%= participant.user_id %> Email: <%= participant.user.email %> </h1>
-    
+  </div>
+
+  <div class="info-container">
+    <h3>Your Team</h3>
+    <% @participants.each do |participant| %>
+      <div class="participant" >
+        <% participant.user.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, class: "avatar" %>
+        <% end %>
+        <h1><%= participant.user.user_name %> </h1>
+      </div>
+
     <% if current_user.id == @project.user_id %>
         <button>
           <%= link_to "Delete", project_participant_path(params[:project_id], participant ), method: :delete, 
@@ -22,5 +33,9 @@
       <% end  %>
     <% end %>
 
+
+  </div>
+
 </div>
+
 
