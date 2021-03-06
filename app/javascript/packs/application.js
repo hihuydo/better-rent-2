@@ -11,6 +11,9 @@ import { initToogleSidebar } from '../plugins/init_toggle_sidebar';
 import { initMapbox} from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
 import { initChatroomCable } from '../channels/chatroom_channel';
+// import { initVideoChat } from '../plugins/init_video_chat';
+
+
 
 document.addEventListener('turbolinks:load', () => {
   // initToogleSidebar();
@@ -19,8 +22,4 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
 });
 
-// $(document).ready(function(){
-//   $('.carousel').carousel({
-//     interval: 2000
-//   })
-// });
+

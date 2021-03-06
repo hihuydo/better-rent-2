@@ -1,0 +1,28 @@
+<div>
+    <h1> Join the viewing </h1>
+    <button class="viewing-button" onclick="mtgJoin()">Join viewing </button>
+    <button class="viewing-button" onclick="mtgLeave()">Leave viewing</button>
+</div>
+
+<div class="row">
+    <div id="mtg-frame"></div>
+</div>
+
+<script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+
+<script>
+    function mtgJoin() {
+        let callUrl = 'https://better-rent.daily.co/property_viewing';
+        if (!window.frame) {
+            // window.inp = document.getElementById('mtg-link');
+            window.frame = window.DailyIframe.createFrame(
+                document.getElementById('mtg-frame')
+            );
+        }
+        window.frame.join({ url: callUrl });
+    }
+    function mtgLeave() {
+        window.frame.leave();
+    }
+</script>
+
