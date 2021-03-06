@@ -1,13 +1,13 @@
 <div class="message-container" id="message-<%= message.id %>">
   <i class="author">
-    <span><%= message.user.email %></span>
+    <% message.user.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, crop: :fill, class: "avatar-chat" %>
+    <% end %>
+    <span><%= message.user.user_name %></span>
     <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
       <% chatroom = Chatroom.find_by(property_id: params[:id]) %>
-      <%= link_to "(X)", project_property_chatroom_message_path(params[:project_id], params[:id], chatroom.id, message), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%#= link_to "(X)", project_property_chatroom_message_path(params[:project_id], params[:id], chatroom.id, message), method: :delete, data: { confirm: "Are you sure?" } %>
     </small>
   </i>
-  <p><%= message.content %></p>
+  <p class="message-content"><%= message.content %></p>
 </div>
-
-<!-- :chatroom_id, :property_id -->
-<!-- project_property_path(params[:project_id],message_id -->
