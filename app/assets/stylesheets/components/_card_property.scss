@@ -43,6 +43,18 @@
   }
 }
 
+.gray-out {
+  opacity: 0.3;
+
+  img {
+    opacity: 0.5;
+  }
+}
+
+.winner {
+  border: 1px solid $link-color;
+}
+
 .property-address {
   margin-top: $spacer;
   font-size: $font-size-base;
@@ -50,8 +62,22 @@
 
 .property-info {
   font-size: 0.85rem;
-  color: $info-color;
+  color: #fff;
   margin-bottom: 50px;
+}
+
+.property-attribute {
+  font-size: 0.85rem;
+  color: $info-color;
+  border-top: 1px solid $info-color;
+  border-bottom: 1px solid $info-color;
+  padding: $spacer * 2 0;
+  margin-bottom: $spacer * 4;
+
+  p {
+    font-size: 0.85rem;
+    color: $info-color;
+  }
 }
 
 .property-CTA {

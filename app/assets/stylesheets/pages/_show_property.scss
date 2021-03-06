@@ -13,6 +13,44 @@ img {
 
 #carouselExampleIndicators > div {
   img {
-    height: 500px;
+    height: 100%;
   }
+}
+
+.carousel {
+  height: 300px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  top: 10% !important;
+  color: $link-color !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.carousel-indicators {
+  top: 0;
+}
+
+.property-show {
+  display: flex;
+}
+
+.property-left {
+  width: 50%;
+}
+
+.property-right {
+  width: 50%;
+}
+
+.carousel-item {
+  height: 400px !important;
+}
+
+.carousel.slide {
+  height: 400px;
 }

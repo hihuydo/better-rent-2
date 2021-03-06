@@ -5,21 +5,20 @@
   <div class="sub-header-properties">
     <div>
       On this page you can vote on one property. Remember: every vote counts!
-      
+
     </div>
       <%= link_to "Back to your project", project_properties_path(@project) %>
   </div>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="property-show">
+    <div class="property-left">
       <div class="property-picture">
-
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
- <!--          <ol class="carousel-indicators">
+          <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol> -->
+          </ol>
           <div class=”carousel-inner”>
             <% @property.photos.each_with_index do |photo, i| %>
               <div class="carousel-item <%= "active" if i == 0 %>">
@@ -43,20 +42,18 @@
         <p><%= @property.description %></p>
       </div>
     </div>
-  </div>
 
-
-
-
-    <div class="col-sm-6">
-      <% if @vote_check.nil? %>
-        <%= render 'votes/star_rating' %>
-      <% else %>
-        <%= render 'votes/voted' %>
-        <%= link_to "Remove all", project_property_vote_path(@project, @property),
-                                  method: :delete,
-                                  data: { confirm: "Are you sure?" }  %>
-      <% end %>
+    <div class="property-right">
+      <div class="property-vote">
+        <% if @vote_check.nil? %>
+          <%= render 'votes/star_rating' %>
+        <% else %>
+          <%= render 'votes/voted' %>
+          <%= link_to "Remove all", project_property_vote_path(@project, @property),
+                                    method: :delete,
+                                    data: { confirm: "Are you sure?" }  %>
+        <% end %>
+      </div>
       <div class="chat-box">
         <h3>Message board</h3>
         <!-- <img src="https://res.cloudinary.com/lewagon-training/image/upload/v1614181587/Chat_swksf3.png" alt="Chat Messages"> -->
