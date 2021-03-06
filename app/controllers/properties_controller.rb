@@ -21,6 +21,7 @@ class PropertiesController < ApplicationController
         lng: prop.longitude
       }
     end
+
   end
 
   def show
