@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @property = @chatroom.property
     @project = @property.project_id
 
+
     if @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
