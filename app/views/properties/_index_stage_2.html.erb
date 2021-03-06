@@ -25,7 +25,9 @@
           <% else %>
           <div class="property-card">
             <%= link_to project_property_path(params[:project_id],property) do %>
-              <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
+              <% if property.photos.first %>
+                <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
+              <% end %>
             <% end %>
             <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
             <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
