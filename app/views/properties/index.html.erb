@@ -8,9 +8,11 @@
         Stage <%= @project.stage %> of 2
       </div>
         <% if user_signed_in? %>
-          <i class="fas fa-plus"></i> <%= link_to "create a new property", new_project_property_path, class: 'create-property' %>
+          <%= link_to new_project_property_path, class: 'create-property' do %>
+            <i class="fas fa-plus"></i> Create a new property
+          <% end %>
         <% end %>
-        <%= link_to project_participants_path do  %>
+        <%= link_to project_participants_path, class: 'create-property' do  %>
           <i class="fas fa-users"></i> <%= @participants.count %> Team-Members
         <% end %>
       <div>

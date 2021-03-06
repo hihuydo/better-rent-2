@@ -31,6 +31,21 @@
 
 .create-property {
   font-size: 14px;
+  margin-right: $spacer;
+
+  &:hover {
+    text-decoration: none;
+    color: $info-color;
+  }
+}
+
+.vote-message {
+  font-size: 2rem;
+  padding: $spacer * 2;
+  margin-bottom: $spacer * 2;
+  background-color: #292E33;
+  color: #fff;
+  border-radius: $spacer;
 }
 
 .chat-box {
@@ -45,14 +60,6 @@
 
   h3 {
     margin-bottom: $spacer * 2;
-  }
-}
-
-.gray-out {
-  opacity: 0.3;
-
-  img {
-    opacity: 0.5;
   }
 }
 

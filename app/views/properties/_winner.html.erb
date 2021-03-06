@@ -1,5 +1,5 @@
 <% if (@participants.count * @project.properties_in_stage_2 ) == @all_votes %>
-  <h1>Voting completet - Property selected</h1>
+  <div class="vote-message">Thank you for your votes. The voting process is now closed.</div>
 <% else %>
   <p>Casted Votes <%= (@participants.count * @project.properties_in_stage_2 ) %>| Expected Votes: <%= (@participants.count * @project.properties_in_stage_2 ) %> </p>
 <% end %>
@@ -15,21 +15,21 @@
             <% end %>
               <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
               <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
-                <div class="property-info">
+                <div class="property-attribute">
                   <p>This property was not selected</p>
                 </div>
                 <div>
               </div>
             </div>
           <% else %>
-          <div class="property-card">
+          <div class="property-card winner">
             <%= link_to project_property_path(params[:project_id],property) do %>
               <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
             <% end %>
             <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
             <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
 
-            <div class="property-info">
+            <div class="property-attribute">
               <p>Votes for Stage <%= @project.stage %></p>
               <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
