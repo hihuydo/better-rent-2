@@ -10,15 +10,14 @@ class PropertiesController < ApplicationController
 
     # skipping pundit for now
     skip_policy_scope
-
     @participants = Participant.where(project_id: @project.id)
-
     @all_votes = vote_count_stage(@properties, @project)
 
     @markers = @properties.geocoded.map do |prop|
       {
         lat: prop.latitude,
-        lng: prop.longitude
+        lng: prop.longitude,
+        infoWindow: render_to_string(partial: "infoWindow", locals: { prop: prop }),
       }
     end
 
