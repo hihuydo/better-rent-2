@@ -36,21 +36,40 @@ img {
 }
 
 .property-show {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacer * 4;
+  margin-bottom: 6rem;
 }
 
 .property-left {
-  width: 50%;
+
 }
 
 .property-right {
-  width: 50%;
+}
+
+.property-vote {
+  background-color: #292E33;
+  padding: $spacer * 2;
+  border-radius: $spacer;
+  border: 1px solid $link-color;
+  z-index: 100;
 }
 
 .carousel-item {
   height: 400px !important;
+  transition: none !important;
 }
 
 .carousel.slide {
   height: 400px;
+}
+
+.br-theme-css-stars .br-widget a.br-selected:after {
+  color: $link-color !important;
+}
+
+.br-theme-css-stars .br-widget a.br-active:after {
+  color: $link-color !important;
 }
