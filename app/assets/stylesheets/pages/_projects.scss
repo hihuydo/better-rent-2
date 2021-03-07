@@ -11,8 +11,13 @@ h1 {
 }
 
 .stage-headline {
-  color: $link-color;
-  font-size: 0.85rem;
+  color: #fff;
+  font-size: 1rem;
+
+  p {
+    color: $info-color;
+    font-size: 0.85rem;
+  }
 }
 
 .stages {
@@ -22,7 +27,7 @@ h1 {
   // margin-right: 3.5rem;
 
   hr {
-    background-color: $link-color;
+    background-color: $info-color;
     margin-bottom: $spacer * 2;
   }
 }

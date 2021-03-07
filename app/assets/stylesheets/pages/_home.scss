@@ -44,6 +44,7 @@
 
 .card-home {
   background-color: $card-bg-color;
+  border: 1px solid $link-color;
   border-radius: $spacer;
   padding: $spacer * 8 $spacer * 2;
   margin: 0;
