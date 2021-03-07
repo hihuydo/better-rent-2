@@ -41,6 +41,8 @@
         <h3>Description of the property</h3>
         <p><%= @property.description %></p>
       </div>
+
+
     </div>
 
     <div class="property-right">
@@ -60,9 +62,11 @@
         <div>
           <%= render 'chatrooms/show' %>
         </div>
+          <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
+            <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?", input_html: {class: "input-chat"} %>
+          <% end %>
       </div>
     </div>
-
   </div>
 
 

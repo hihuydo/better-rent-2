@@ -1,11 +1,6 @@
-
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>" style="overflow-y:scroll; height:380px;">
-
-<% @chatroom.messages.each do |message| %>
-<%= render 'messages/message', message: message %>
+<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+<!-- <div id="messages" data-chatroom-id="<%= @chatroom.id %>" style="overflow-y:auto; height:500px;"> -->
+  <% @chatroom.messages.each do |message| %>
+    <%= render 'messages/message', message: message %>
   <% end %>
 </div>
-
-  <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?", input_html: {class: "input-chat"} %>
-  <% end %>

@@ -1,13 +1,20 @@
 <div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <% message.user.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, crop: :fill, class: "avatar-chat" %>
-    <% end %>
-    <span><%= message.user.user_name %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
-      <% chatroom = Chatroom.find_by(property_id: params[:id]) %>
-      <%#= link_to "(X)", project_property_chatroom_message_path(params[:project_id], params[:id], chatroom.id, message), method: :delete, data: { confirm: "Are you sure?" } %>
-    </small>
-  </i>
+  <div class="row">
+    <div class="col-sm">
+      <i class="author">
+        <% message.user.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, class: "avatar-chat" %>
+      <% end %>
+      </i>
+        <span class="message-user"><%= message.user.user_name %></span>
+    </div>
+
+    <div class="col-sm">
+      <small class="message-timestamp"><%= message.created_at.strftime("%a %b %e at %l:%M%p") %>
+        <% chatroom = Chatroom.find_by(property_id: params[:id]) %>
+        <%#= link_to "(X)", project_property_chatroom_message_path(params[:project_id], params[:id], chatroom.id, message), method: :delete, data: { confirm: "Are you sure?" } %>
+      </small>
+    </div>
+  </div>
   <p class="message-content"><%= message.content %></p>
 </div>

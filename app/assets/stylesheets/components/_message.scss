@@ -4,9 +4,23 @@
   background-color: $card-bg-color;
   padding: 1rem;
   border-radius: $spacer;
-  margin: 0 1rem 1rem 0;
+  margin: 0 0.8rem 0.8rem 0;
 }
 
 .message-content {
   padding: $spacer $spacer * 4.5;
+}
+
+.input-chat {
+  background-color: $card-bg-color;
+  border-radius: $spacer;
+  border-color: $text-color;
+}
+
+.message-user {
+  font-weight: bold;
+}
+
+.message-timestamp{
+  text-align: right;
 }
