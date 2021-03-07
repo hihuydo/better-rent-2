@@ -1,5 +1,5 @@
 meta_product_name: "Better Rent"
-meta_title: "Better Rent - Rent better office space"
+meta_title: "Find Your Perfect Office Space | Better Rent"
 meta_description: "Make better renting decisions through collaborating with your stakeholders"
-meta_image: "../app/assets/images/cover.png" # should exist in `app/assets/images/`
+meta_image: "cover.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards

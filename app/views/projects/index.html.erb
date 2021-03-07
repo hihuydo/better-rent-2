@@ -13,7 +13,9 @@
 
   <div class="stages">
     <div>
-      <div class="stage-headline">Stage 1</div>
+      <div class="stage-headline">Stage 1
+        <p>All needed votes should be casted on the properties, in order for that project to get to Stage 2</p></div>
+
       <hr>
         <% @projects.each do |project|  %>
           <% if project.stage == 1 %>
@@ -61,7 +63,9 @@
         <% end %>
     </div>
     <div>
-      <div class="stage-headline">Stage 2</div>
+      <div class="stage-headline">Stage 2
+        <p>After the second voting process, one property with the most votes will be selected</p>
+      </div>
       <hr>
         <% @projects.each do |project|  %>
           <% if project.stage == 2 %>
