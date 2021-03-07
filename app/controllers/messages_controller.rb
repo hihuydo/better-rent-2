@@ -20,9 +20,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message = Message.find(params[:id])
+    # @project = Project.find(@property.project_id)
+    @project = Project.find(params[:project_id])
     @property = Property.find(params[:property_id])
-    @project = Project.find(@property.project_id)
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    @message = Message.find(params[:id])
     @message.destroy
     authorize @message
     redirect_to project_property_path(@project, @property)

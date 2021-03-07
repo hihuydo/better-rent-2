@@ -7,7 +7,7 @@ const initChatroomCable = () => {
     consumer.subscriptions.create({ channel: "ChatroomChannel", id: id }, {
       received(data) {
         console.log(data); // called when data is broadcast in the cable
-        messagesContainer.insertAdjacentHTML('beforebegin', data);
+        messagesContainer.insertAdjacentHTML('beforeend', data);
           const input = document.querySelector('.input-chat');
                 input.value = '';
       },
