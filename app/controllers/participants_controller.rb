@@ -4,10 +4,12 @@ class ParticipantsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @participants = Participant.where(project_id: @project.id)
+    @properties = Property.where(project_id: @project.id)
     skip_policy_scope
 
     # just needed for test purposes - can be dele@tet
     @user = current_user
+
 
     @participant = Participant.new
     @users = User.all

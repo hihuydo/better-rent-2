@@ -20,6 +20,7 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
   initChatroomCable();
+  // initVideoChat();
 });
 
 

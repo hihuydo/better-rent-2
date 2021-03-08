@@ -2,39 +2,80 @@
 <%= render 'pages/header', title: "Your team" %>
 
 <div class="main-container">
-  <div class="info-container">
-    <div>
-      <h1>Project: <%= @project.name %></h1>
-      <h3> Project Owner: <%= @project.user.user_name %></h1>
+  <div class="top">
+    <div class="info-container">
+      <div class="info-box">
+          <div class="info">
+            <p>Project name</p>
+            <h3><%= @project.name %></h3>
+          </div>
+          <div class="info">
+            <p> Project Owner<p>
+            <h3><%= @project.user.user_name %></h3>
+          </div>
+        </div>
 
-      <% if current_user.id == @project.user_id %>
-        <%= render 'participants/new' %> 
-      <% end %>
-    </div>
+        <div class="info-box">
+          <div class="info">
+            <p>Project stage</p>
+            <h3><%= @project.stage %></h3>
+          </div>
 
-
-  </div>
-
-  <div class="info-container">
-    <h3>Your Team</h3>
-    <% @participants.each do |participant| %>
-      <div class="participant" >
-        <% participant.user.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, crop: :fill, class: "avatar" %>
-        <% end %>
-        <h1><%= participant.user.user_name %> </h1>
+          <div class="info">
+            <p>Project members</p>
+            <% @participants.each do |participant| %>
+              <div class="participants" >
+                <% participant.user.photos.each do |photo| %>
+                  <div class="icon">
+                    <%= cl_image_tag photo.key, crop: :fill, class: "avatar-member" %>
+                    <% if current_user.id == @project.user_id %>
+                      <%= link_to project_participant_path(params[:project_id], participant ), method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <i class="fas fa-trash-alt"></i>
+                      <% end %>                    
+                    <% end  %>                   
+                  </div>
+                <% end %>
+              </div> 
+            <% end %>
+          </div>
+        </div>
       </div>
+    </div>
+      
+    
+    <div class="add-container">
+        <% if current_user.id == @project.user_id %>
+          <div >
+            <div class="form-property">
+              <%= simple_form_for [ @project, @participant ] do |f| %>
+                <%= f.collection_select :user_id, @users, :id, :email %>
+                <%= f.button :submit, "add", class: "btn btn-primary" %>
+              <% end %>
+            </div>          
+          </div>
 
-    <% if current_user.id == @project.user_id %>
-        <button>
-          <%= link_to "Delete", project_participant_path(params[:project_id], participant ), method: :delete, 
-                                                                                        data: { confirm: "Are you sure?" } %>
-        </button> 
-      <% end  %>
-    <% end %>
+        <% end %>
+    </div> 
 
+  <div class="properties">
+    <div class="property-cards">
+          <% @properties.each do |property|  %>
+            <div class="property-card">
+              <%= link_to project_property_path(params[:project_id],property) do %>
+                <% if property.photos.first %>
+                  <%= cl_image_tag property.photos.first.key, crop: :fill, class: "card-item" %>
+                <% end %>
+              <% end %>
+              <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
+              <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+            </div>
+          <% end %>
+    </div>
+  </div>
 
   </div>
+
+
 
 </div>
 
