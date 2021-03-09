@@ -18,7 +18,6 @@
       <div>
 
         <% if (@properties.count * @participants.count) == @all_votes %>
-          <p>All Votes casted</p>
           <%= render 'projects/change_stage' %>
         <% end %>
       </div>
