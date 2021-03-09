@@ -11,5 +11,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDISCLOUD_URL") { "redis://localhost:6379/1" } %>
+  url: <%= ENV.fetch("REDISCLOUD_URL") %>
   channel_prefix: better_rent_2_production
