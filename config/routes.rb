@@ -18,5 +18,4 @@ Rails.application.routes.draw do
 
   # for redis
   mount ActionCable.server => "/cable"
-
 end
