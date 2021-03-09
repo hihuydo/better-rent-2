@@ -1,7 +1,68 @@
-.info-container {
-  display: absolute;
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.participant {
+.info-container {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: left;
+  border: 1px solid red;
+  width: 30%;
+  margin-right: 30px;
+  margin-top: 50px;
+}
+
+.info-box {
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+
+}
+
+.info {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: relative;
+}
+
+.participants {
+  display: inline-block;
+}
+
+.icon {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.avatar-member {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid $link-color;
+  position: relative;
+}
+
+.fa-trash-alt {
+  display: absolute;
+  right: -15px;
+}
+
+p {
+  color: $navi-tag-active;
+  font-size: 16px;
+  display: relative;
+}
+
+.add-container {
+  display: inline-flex;
+  width: 30%;
+  margin-top: 50px;
 }
