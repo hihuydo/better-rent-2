@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '/projects/:id/change_stage', to: 'projects#stage', as: :change_stage
   patch  "projects/:id",      to: "projects#stage"
 
+  # for redis
+  mount ActionCable.server => "/cable"
+
 end
