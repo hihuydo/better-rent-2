@@ -1,7 +1,7 @@
 #mtg-frame {
   position: absolute; 
-  right: 50px;
-  top: 100px;
+  right: 35px;
+  top: 600px;
   height: 1000px;
   width: 1000px;
   z-index: 1;
@@ -10,7 +10,8 @@
 .viewing-button {
   border: none;
   width: 150px;
-  margin-left: 10px;
+  // margin-left: 10px;
+  margin-right: 10px;
   background-color: transparent;
   border: 1px solid $link-color;
   color: $link-color;
