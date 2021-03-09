@@ -91,8 +91,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mounts Action Cable outside main process or domain.
-  # config.action_cable.mount_path = nil
-  config.action_cable.url = "wss://better-rent.space/cable"
+  config.action_cable.url = "ws://better-rent.space/cable"
+  # config.action_cable.url = "wss://better-rent.space/cable"
   config.action_cable.allowed_request_origins = [ "http://better-rent.space", "https://better-rent.space" ]
 
   # Inserts middleware to perform automatic connection switching.
