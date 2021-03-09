@@ -22,7 +22,7 @@
           <div class=”carousel-inner”>
             <% @property.photos.each_with_index do |photo, i| %>
               <div class="carousel-item <%= "active" if i == 0 %>">
-                <%= image_tag photo, crop: :fill, class: 'd-block w-100' %>
+                <%= cl_image_tag photo.key, crop: :fill, class: 'd-block w-100' %>
               </div>
             <% end %>
           </div>
