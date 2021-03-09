@@ -28,7 +28,6 @@
   <% if @project.stage_2_completet?  == true && (@all_votes != 0) %>
     <%= render 'properties/winner' %>
   <% elsif @project.stage == 2 %>
-    <p>test Stage 2</p>
     <%= render 'properties/index_stage_2' %>
   <% else @project.stage == 1 %>
 

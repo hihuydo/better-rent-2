@@ -9,11 +9,14 @@
 
 img {
   width: 100%;
+  object-fit: fill;
 }
 
 #carouselExampleIndicators > div {
   img {
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: fill;
   }
 }
 
@@ -58,12 +61,15 @@ img {
 }
 
 .carousel-item {
-  height: 400px !important;
+  // height: auto;
+  height: 600px !important;
   transition: none !important;
+  object-fit: fill;
 }
 
 .carousel.slide {
-  height: 400px;
+  height: 600px !important;
+  // width: 700px !important;
 }
 
 .br-theme-css-stars .br-widget a.br-selected:after {
