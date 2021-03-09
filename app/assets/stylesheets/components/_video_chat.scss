@@ -1,6 +1,10 @@
 #mtg-frame {
-  height: 600px;
-  width: 900px;
+  position: absolute; 
+  right: 50px;
+  top: 100px;
+  height: 1000px;
+  width: 1000px;
+  z-index: 1;
 }
 
 .viewing-button {

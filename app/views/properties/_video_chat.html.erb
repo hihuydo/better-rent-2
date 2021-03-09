@@ -14,7 +14,6 @@
     function mtgJoin() {
         let callUrl = 'https://better-rent.daily.co/property_viewing';
         if (!window.frame) {
-            // window.inp = document.getElementById('mtg-link');
             window.frame = window.DailyIframe.createFrame(
                 document.getElementById('mtg-frame')
             );
@@ -25,4 +24,3 @@
         window.frame.leave();
     }
 </script>
-
