@@ -4,7 +4,8 @@
 <div class="main-container">
   <div class="project-intro">
     <div>
-      <p>Start here by adding a project. Add the city or location where you are choosing a new space.</p>
+      <p>Where is your team headed? Start here by creating a project for the city or location.</p>
+      <p>Then add properties to choose from, and your team members to vote!</p>
       <% if user_signed_in? %>
         <i class="fas fa-plus"></i> <%= link_to "create a new project", new_project_path, class: 'create-property' %>
       <% end %>
@@ -14,7 +15,7 @@
   <div class="stages">
     <div>
       <div class="stage-headline">Stage 1
-        <p>All needed votes should be casted on the properties, in order for that project to get to Stage 2</p></div>
+        <p>All needed votes should be cast on the properties, in order for that project to move to Stage 2</p></div>
 
       <hr>
         <% @projects.each do |project|  %>
