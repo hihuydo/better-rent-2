@@ -40,13 +40,13 @@ img {
 
 .property-show {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 60% 40% 1fr 1fr;
+  // grid-template-columns: 1fr 1fr;
   grid-gap: $spacer * 4;
   margin-bottom: 6rem;
 }
 
 .property-left {
-
 }
 
 .property-right {
