@@ -1,8 +1,8 @@
 <br>
 
 <div>
-    <button class="viewing-button" onclick="mtgJoin()">Join viewing </button>
-    <button class="viewing-button" onclick="mtgLeave()">Leave viewing</button>
+    <button class="viewing-button" id="joinbtn" onclick="mtgJoin()">Join viewing </button>
+    <button class="viewing-button" id="leavebtn" style='display: none;' onclick="mtgLeave()">Leave viewing</button>
 </div>
 
 <div class="row">
@@ -13,17 +13,30 @@
 
 <script>
     function mtgJoin() {
+        const leaveButton = document.getElementById('leavebtn');
+        leaveButton.style.display = 'inherit';
+        const joinButton = document.getElementById('joinbtn');
+        joinButton.style.display = 'none';
+
         let callUrl = 'https://better-rent.daily.co/property_viewing';
         if (!window.frame) {
             // window.inp = document.getElementById('mtg-link');
             window.frame = window.DailyIframe.createFrame(
                 document.getElementById('mtg-frame')
             );
+            document.getElementById('mtg-frame').className += 'frame';
         }
         window.frame.join({ url: callUrl });
     }
     function mtgLeave() {
         window.frame.leave();
+        document.getElementById('mtg-frame').className = '';
+        location.reload();
+            
+        const leaveButton = document.getElementById('leavebtn');
+        leaveButton.style.display = 'none';
+        const joinButton = document.getElementById('joinbtn');
+        joinButton.style.display = 'inherit';
     }
 </script>
 
