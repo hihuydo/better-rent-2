@@ -10,9 +10,9 @@
               <% end %>
             <% end %>
               <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
-              <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+              <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %> € per square meters</div>
                 <div class="property-info">
-                  <p>Property was eliminated in Stage 1</p>
+                  <p>This property was not selected</p>
                 </div>
                 <div>
               </div>
@@ -25,14 +25,13 @@
               <% end %>
             <% end %>
             <div class="property-address"><%= property.street %> <%= property.number %>, <%= property.zipcode %> <%= property.city %></div>
-            <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %>€</div>
+            <div class="property-info"><%= property.lettable_area %> square meters | <%= property.rent_per_sqm %> € per square meters</div>
 
             <div class="property-info">
-              <p>Votes for Stage <%= @project.stage %></p>
+              <p class="stage"> Stage <%= @project.stage %> of 2</p>
               <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
-                <p> All votes have been cast </p>
-                <p> Average by team <%= property.vote_average_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
+                <p> Average: <%= property.vote_average_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
                 <p> <%= property.winner?  %> </p>
               <% end %>
             </div>
