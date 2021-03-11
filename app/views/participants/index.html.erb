@@ -25,9 +25,11 @@
             <p>Project members</p>
             <% @participants.each do |participant| %>
               <div class="participants" >
-<!--                 added participant user to delete test users in production, comment out below line to show only avatar -->
                 <small><%= participant.user.user_name %></small>
+                <!-- comment in the below two lines to delete a test user with only an email address in production -->
                 <small><%= participant.user.email %></small>
+                <%= link_to "(X)", project_participant_path(params[:project_id], participant ), method: :delete, data: { confirm: "Are you sure?" } %>
+
                 <% participant.user.photos.each do |photo| %>
                   <div class="icon">
                     <%= cl_image_tag photo.key, crop: :fill, class: "avatar-member" %>
