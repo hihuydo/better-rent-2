@@ -27,6 +27,7 @@
               <div class="participants" >
 <!--                 added participant user to delete test users in production, comment out below line to show only avatar -->
                 <small><%= participant.user.user_name %></small>
+                <small><%= participant.user.email %></small>
                 <% participant.user.photos.each do |photo| %>
                   <div class="icon">
                     <%= cl_image_tag photo.key, crop: :fill, class: "avatar-member" %>
