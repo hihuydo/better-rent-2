@@ -31,7 +31,7 @@
               <p>Votes for Stage <%= @project.stage %></p>
               <i class="fas fa-vote-yea"></i> <%= property.votes.where(stage: @project.stage).count %> Votes / <i class="fas fa-users"></i> <%= @participants.count %> Team-Members
               <% if property.votes.where(stage: @project.stage).count == @participants.count %>
-                <p> All Vote casted </p>
+                <p> All votes have been cast </p>
                 <p> Average by team <%= property.vote_average_stage_2.round(1) %> <i class="fas fa-star"></i> </p>
                 <p> <%= property.winner?  %> </p>
               <% end %>
