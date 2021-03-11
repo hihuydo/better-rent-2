@@ -38,7 +38,7 @@
       </div>
 
     <div>
-          <%= render 'video_chat' %>
+      <%= render 'video_chat' %>
     </div>
 
       <div class="description">
@@ -47,16 +47,6 @@
         <p><%= @property.description %></p>
       </div>
 
-      <div class="chat-box">
-        <h3>Message board</h3>
-          <br>
-        <div>
-          <%= render 'chatrooms/show' %>
-        </div>
-          <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
-            <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?", input_html: {class: "input-chat"} %>
-          <% end %>
-      </div>
     </div>
 
     <div class="property-right">
@@ -69,6 +59,17 @@
                                     method: :delete,
                                     data: { confirm: "Are you sure?" }  %>
         <% end %>
+      </div>
+
+      <div class="chat-box">
+        <h3>Message board</h3>
+          <br>
+        <div>
+          <%= render 'chatrooms/show' %>
+        </div>
+          <%= simple_form_for [ @project, @property, @chatroom, @message ], remote: true do |f| %>
+            <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?", input_html: {class: "input-chat"} %>
+          <% end %>
       </div>
 
     </div>
