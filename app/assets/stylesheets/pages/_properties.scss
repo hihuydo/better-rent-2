@@ -68,7 +68,7 @@
 }
 
 .chat-box {
-  margin-top: 40px;
+  margin-top: 50px;
   // padding: $spacer/2 $spacer*2;
 }
 
@@ -92,4 +92,9 @@
 
 .stage {
   color: $link-color !important;
+}
+
+.votes-delete {
+  margin-left: 2*$spacer;
+  margin-top: 1*$spacer;
 }
