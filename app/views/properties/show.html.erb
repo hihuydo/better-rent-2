@@ -46,7 +46,6 @@
         <br>
         <p><%= @property.description %></p>
       </div>
-
     </div>
 
     <div class="property-right">
@@ -55,12 +54,10 @@
           <%= render 'votes/star_rating' %>
         <% else %>
           <%= render 'votes/voted' %>
-          <div class="votes-delete">
-          <%= link_to "Remove all", project_property_vote_path(@project, @property),
+          <%#= link_to "Remove all", project_property_vote_path(@project, @property),
                                     method: :delete,
                                     data: { confirm: "Are you sure?" }  %>
         <% end %>
-      </div>
       </div>
 
       <div class="chat-box">
@@ -73,13 +70,8 @@
             <%= f.input :content, label: false, placeholder: "thoughts on #{@property.street} #{@property.number}?", input_html: {class: "input-chat"} %>
           <% end %>
       </div>
-
     </div>
   </div>
-
-
-
-
 </div>
 
 
