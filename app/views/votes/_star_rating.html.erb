@@ -4,7 +4,7 @@
   <%= simple_form_for [ @project, @property, @vote ] do |f| %>
 		<div class="rating-row">
 			<p>Price</p>
-			<p><%= @property.rent_per_sqm %> EUR / m²</p>
+			<p><%= @property.rent_per_sqm %> € / square meter </p>
 			<%= f.input :vote_price, collection: (1..5).to_a, label: false, class: 'vote-stars' %>
 		</div>
 
@@ -17,7 +17,7 @@
 
 		<div class="rating-row">
 			<p>Size</p>
-			<p><%= @property.lettable_area %> m²</p>
+			<p><%= @property.lettable_area %> &nbsp; square meters </p>
 			<%= f.input :vote_size, collection: (1..5).to_a, label: false %>
 		</div>
 
