@@ -54,9 +54,9 @@
           <%= render 'votes/star_rating' %>
         <% else %>
           <%= render 'votes/voted' %>
-          <%#= link_to "Remove all", project_property_vote_path(@project, @property),
+          <%= link_to "Remove all", project_property_vote_path(@project, @property),
                                     method: :delete,
-                                    data: { confirm: "Are you sure?" }  %>
+                                    data: { confirm: "Are you sure?" } %> 
         <% end %>
       </div>
 
