@@ -1,11 +1,15 @@
 .rating-row {
   display: flex;
   align-items: flex-start;
-  align-content: center;
+  align-content: left;
   justify-content: space-between;
   margin-top: 25px;
   margin-bottom: 15px;
   border-bottom: 1px solid $link-color;
+
+  p {
+    align-content: left;
+  }
 }
 
 .rating {
