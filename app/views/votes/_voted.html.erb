@@ -3,7 +3,7 @@
 	<h1>You already voted</h1>
 		<div class="rating-row">
 			<p>Price</p>
-			<p><%= @property.rent_per_sqm %> EUR / m²</p>
+			<p><%= @property.rent_per_sqm %> € / square meter</p>
 			<div>
 				<% @vote_check.vote_price.times do %>
 					<i class="fas fa-star"></i>
@@ -23,7 +23,7 @@
 
 		<div class="rating-row">
 			<p>Size</p>
-			<p><%= @property.lettable_area %> EUR / m²</p>
+			<p>  <%= @property.lettable_area %> &nbsp square meters  </p>
 			<div>
 				<% @vote_check.vote_size.times do %>
 					<i class="fas fa-star"></i>
