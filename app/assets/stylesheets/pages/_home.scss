@@ -43,6 +43,7 @@
 }
 
 .card-home {
+  position: relative;
   background-color: $card-bg-color;
   border: 1px solid $link-color;
   border-radius: $spacer;
@@ -53,6 +54,13 @@
   h1 {
     color: $text-color;
     margin-bottom: 0;
+  }
+
+  .coded-with {
+    position: absolute;
+    bottom: $spacer;
+    margin: 0 auto;
+    display: inline-block;
   }
 
   img {
